@@ -1,0 +1,35 @@
+{
+  "name": "@local/demopb",
+  "author": "Itential Automation Platform",
+  "version": "0.0.0",
+  "description": "demoPb",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "echo not needed npm publish --access=public --registry=http://registry.npmjs.org",
+    "validateSchema": "node test/manifestTester.js manifest.json manifest-schema.json",
+    "validateSchemaLinks": "node test/manifestLinkTester.js manifest.json",
+    "generateImageLinks": "node utils/generateImageLinks.js"
+  },
+  "keywords": [
+    "Itential",
+    "IAP",
+    "artifacts"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "r2": "^2.0.1",
+    "ajv": "6.10.0",
+    "better-ajv-errors": "^0.6.1",
+    "fs-extra": "^7.0.1"
+  },
+  "IAPDependencies": {
+    "@itential/app-workflow_engine": "",
+    "@itential/app-json_forms": "",
+    "@itential/app-operations_manager": ""
+  },
+  "IAPCategories": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itential/MitchPrebuilt1.git"
+  }
+}
