@@ -1,0 +1,473 @@
+{
+  "_id": "621d36785da44100e455a1d3",
+  "name": "createAndUpdateArraysPP",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "artifact",
+      "type": "object",
+      "properties": {
+        "update": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "examples": [
+                  "README.md"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "examples": [
+                  "file"
+                ]
+              },
+              "content": {
+                "type": "string",
+                "examples": [
+                  "<!-- This is a comment in md (Markdown) format, it will not be visible to the end user -->\n<!-- Update the below line with your artifact name -->\n# ASA Firewall Object Group Update \n<!-- Add a short description or tag-line -->\nThis artifact contains the Cisco ASA group policy object update workflow for Ansible using IAP.  This workflow is designed to create and/or update an existing group object to add and remove hosts on a Cisco ASA firewall physical and virtual devices via Ansible.\n​​\n<!-- Leave TOC intact unless you've added or removed headers -->\n## Table of Contents\n​\n- [Overview](#overview)\n- [Features](#features)\n- [Requirements](#requirements)\n- [Future Enhancements](#future-enhancements)\n- [How to Install](#how-to-install)\n- [How to Run](#how-to-run)\n- [Additional Information](#additional-information)\n​\n## Overview\n<!-- Write a few sentences about the artifact and explain the use case(s) -->\n<!-- Ex.: The Migration Wizard enables IAP users to conveniently move their automation use cases between their different IAP environments -->\n<!--  (e.g. from Dev to Pre-Production or from Lab to Production).  -->\nThis artifact contains the Cisco ASA group policy object update workflow for Ansible using IAP.  This workflow is designed to create and/or update an existing group object to add and remove hosts on a Cisco ASA firewall physical and virtual devices via Ansible.\n​\nThis solution consists of the following:\n* Main Workflow (**IAP-Artifacts ASA Firewall Group Policy Update**)\n* Automation Catalog entry (**IAP Artifacts ASA Firewall Object Group Update**)\n* JSON Form (**IAP Artifacts ASA Firewall Object Group Update**)\n​\n<!-- Workflow(s) Image Placeholder - TO BE ADDED DIRECTLY TO GITLAB -->\n<table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/ASA-Firewall-Object-Group-Update/raw/master/images/overview.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n\n​\n## Features\n<!-- Bullet point highlighting the most exciting features of the artifact -->\n<!-- Ex.: * Automatically checks for device type -->\n<!-- Ex.: * Displays dry-run to user (asking for confirmation) prior to pushing config to the device -->\n<!-- Ex.: * Verifies downloaded file integrity (using md5), will try to download again if failed -->\n  * Group Update Host Addition and Removal.\n  * Allow for a rollback in case functionality checks have failed.\n  * Zero touch mode of operation is available to select via JSON form.\n​\n## Requirements\n<!-- Explain any pre-req. Ex.: This artifact requires Ansible or NSO (with F5 NED) in order to run -->\nThis artifact requires Ansible, Itential Automation Gateway, and a Cisco ASA device.\n​\n## Supported Device Types\n  * Cisco ASA/ASAv\n​\n## Test Environment\n  * Devices Ver.:\n    * asa: 9.12\n  * IAP Ver. 2019.3.2\n  * Itential Automation Gateway Ver.: 2.36.3+2019.3.14\n  * Ansible Ver.: 2.8.3\n​\n## Future Enhancements\n<!-- OPTIONAL Mention If the artifact has known limited support. Ex.: This artifact only support Cisco IOS and XR devices -->\n* This workflow is designed to run only against Ansible devices; don't try to run it against Cisco-ASA devices orchastrated by Cisco NSO.\n* Form validation on list of hosts only supports IPv4 addresses\n​\n## How to Install\n<!-- OPTIONAL - Explain if external (to IAP) components are required. Ex. The ansible roles required for this artifact can be found in www.gitlab.com/itentialopensource......   -->\n * To install this artifact in IAP, use **App-Artifact** available in Nexus repo. \n <table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/ASA-Firewall-Object-Group-Update/raw/master/images/install.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n​\n\n## How to Run\n<!-- Explain what is/are the main entrypoint(s) for this artifact: automation catalog document, workflow builder, postman, etc.  -->\nStarting the ASA Firewall Group Policy Update is done via the Automation Catalog. Please provide the device, group and hosts in the provided form.\n <table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/ASA-Firewall-Object-Group-Update/raw/master/images/runAutomation.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n\n## Additional Information\nPlease use your Itential Customer Success account if you need support when using this artifact.\n"
+                ]
+              }
+            },
+            "required": []
+          },
+          "$id": "update"
+        },
+        "create": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "examples": [
+                  "bundles"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "examples": [
+                  "directory"
+                ]
+              },
+              "content": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "examples": [
+                        "ac_agenda_jobs"
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "examples": [
+                        "directory"
+                      ]
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "examples": [
+                              "IAP Artifacts ASA Firewall Object Group Update.json"
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "examples": [
+                              "file"
+                            ]
+                          },
+                          "content": {
+                            "type": "string",
+                            "examples": [
+                              "{\n  \"_id\": \"5f3c38e78236fd5385c31bbd\",\n  \"name\": \"IAP Artifacts ASA Firewall Object Group Update\",\n  \"data\": {\n    \"lastUpdated\": \"2020-03-23T19:45:50.899Z\",\n    \"formData\": {\n      \"zeroTouch\": true,\n      \"asaFirewallDevice\": \"asa-aws-ansible\",\n      \"hostList\": [],\n      \"checkbox1\": true\n    },\n    \"formId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"workflowId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"description\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"gbac\": {\n      \"write\": [],\n      \"read\": []\n    },\n    \"modifiedById\": \"5f3bda043e82cb0740b460d6\",\n    \"modifiedByUsername\": \"justin.cotton\"\n  },\n  \"lastModifiedBy\": \"DSUP-IAP20201:11193\",\n  \"lastRunAt\": null,\n  \"nextRunAt\": null,\n  \"priority\": 0,\n  \"repeatInterval\": null,\n  \"repeatTimezone\": null,\n  \"type\": \"normal\"\n}"
+                            ]
+                          }
+                        },
+                        "required": []
+                      }
+                    }
+                  },
+                  "required": []
+                }
+              }
+            },
+            "required": []
+          },
+          "$id": "create"
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "scriptsObject",
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    {
+      "$id": "ymlFile",
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    {
+      "$id": "testsObject",
+      "type": "object"
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "createArray",
+      "type": "object",
+      "properties": {
+        "create": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "examples": [
+                  "bundles"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "examples": [
+                  "directory"
+                ]
+              },
+              "content": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "examples": [
+                        "ac_agenda_jobs"
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "examples": [
+                        "directory"
+                      ]
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "examples": [
+                              "IAP Artifacts ASA Firewall Object Group Update.json"
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "examples": [
+                              "file"
+                            ]
+                          },
+                          "content": {
+                            "type": "string",
+                            "examples": [
+                              "{\n  \"_id\": \"5f3c38e78236fd5385c31bbd\",\n  \"name\": \"IAP Artifacts ASA Firewall Object Group Update\",\n  \"data\": {\n    \"lastUpdated\": \"2020-03-23T19:45:50.899Z\",\n    \"formData\": {\n      \"zeroTouch\": true,\n      \"asaFirewallDevice\": \"asa-aws-ansible\",\n      \"hostList\": [],\n      \"checkbox1\": true\n    },\n    \"formId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"workflowId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"description\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"gbac\": {\n      \"write\": [],\n      \"read\": []\n    },\n    \"modifiedById\": \"5f3bda043e82cb0740b460d6\",\n    \"modifiedByUsername\": \"justin.cotton\"\n  },\n  \"lastModifiedBy\": \"DSUP-IAP20201:11193\",\n  \"lastRunAt\": null,\n  \"nextRunAt\": null,\n  \"priority\": 0,\n  \"repeatInterval\": null,\n  \"repeatTimezone\": null,\n  \"type\": \"normal\"\n}"
+                            ]
+                          }
+                        },
+                        "required": []
+                      }
+                    }
+                  },
+                  "required": []
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "updateArray",
+      "type": "object",
+      "properties": {
+        "update": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "examples": [
+                  "bundles"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "examples": [
+                  "directory"
+                ]
+              },
+              "content": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "examples": [
+                        "ac_agenda_jobs"
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "examples": [
+                        "directory"
+                      ]
+                    },
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "examples": [
+                              "IAP Artifacts ASA Firewall Object Group Update.json"
+                            ]
+                          },
+                          "type": {
+                            "type": "string",
+                            "examples": [
+                              "file"
+                            ]
+                          },
+                          "content": {
+                            "type": "string",
+                            "examples": [
+                              "{\n  \"_id\": \"5f3c38e78236fd5385c31bbd\",\n  \"name\": \"IAP Artifacts ASA Firewall Object Group Update\",\n  \"data\": {\n    \"lastUpdated\": \"2020-03-23T19:45:50.899Z\",\n    \"formData\": {\n      \"zeroTouch\": true,\n      \"asaFirewallDevice\": \"asa-aws-ansible\",\n      \"hostList\": [],\n      \"checkbox1\": true\n    },\n    \"formId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"workflowId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"description\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"gbac\": {\n      \"write\": [],\n      \"read\": []\n    },\n    \"modifiedById\": \"5f3bda043e82cb0740b460d6\",\n    \"modifiedByUsername\": \"justin.cotton\"\n  },\n  \"lastModifiedBy\": \"DSUP-IAP20201:11193\",\n  \"lastRunAt\": null,\n  \"nextRunAt\": null,\n  \"priority\": 0,\n  \"repeatInterval\": null,\n  \"repeatTimezone\": null,\n  \"type\": \"normal\"\n}"
+                            ]
+                          }
+                        },
+                        "required": []
+                      }
+                    }
+                  },
+                  "required": []
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "required": []
+    }
+  ],
+  "steps": [
+    {
+      "id": 4,
+      "type": "declaration",
+      "library": "Array",
+      "method": "new Array",
+      "args": [],
+      "view": {
+        "row": 1,
+        "col": 1
+      },
+      "polymorphIndex": 0
+    },
+    {
+      "id": 7,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "scriptsObject",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 5,
+        "ptr": "/args/1/value"
+      }
+    },
+    {
+      "id": 10,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "artifact",
+        "ptr": "/create"
+      },
+      "to": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/args/1/value"
+      }
+    },
+    {
+      "id": 11,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "artifact",
+        "ptr": "/update"
+      },
+      "to": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/args/2/value"
+      }
+    },
+    {
+      "id": 14,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "ymlFile",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/args/3/value"
+      }
+    },
+    {
+      "id": 6,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 4,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 5,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 5,
+      "type": "method",
+      "library": "Array",
+      "method": "push",
+      "args": [
+        null,
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      }
+    },
+    {
+      "id": 9,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 5,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 8,
+      "type": "method",
+      "library": "Array",
+      "method": "concat",
+      "args": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "view": {
+        "row": 3,
+        "col": 2
+      }
+    },
+    {
+      "id": 12,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "createArray",
+        "ptr": "/create"
+      }
+    },
+    {
+      "id": 13,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "updateArray",
+        "ptr": "/update"
+      }
+    },
+    {
+      "id": 15,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "testsObject",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/args/4/value"
+      }
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 3,
+    "row": 5
+  },
+  "created": "2022-11-18T18:18:22.529Z",
+  "createdBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "lastUpdated": "2022-11-18T18:18:22.529Z",
+  "lastUpdatedBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "version": "3.17.7-2021.1.7",
+  "tags": []
+}

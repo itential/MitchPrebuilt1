@@ -1,0 +1,782 @@
+{
+  "_id": "6227a41704a9540111aef712",
+  "name": "Prebuilt Promotion Version Control Instance Filter",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "results",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "AdminEssentials"
+            ]
+          },
+          "package_id": {
+            "type": "string",
+            "examples": [
+              "@itential/app-admin_essentials"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "examples": [
+              "2%2E25%2E42-2021%2E1%2E47%2E0"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "examples": [
+              "Application"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "examples": [
+              "Itential Automation Platform's administration suite%2E"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "examples": [
+              "RUNNING"
+            ]
+          },
+          "connection": {
+            "type": "null"
+          },
+          "uptime": {
+            "type": "number",
+            "examples": [
+              3715.3891392
+            ]
+          },
+          "memoryUsage": {
+            "type": "object",
+            "properties": {
+              "rss": {
+                "type": "integer",
+                "examples": [
+                  107737088
+                ]
+              },
+              "heapTotal": {
+                "type": "integer",
+                "examples": [
+                  37851136
+                ]
+              },
+              "heapUsed": {
+                "type": "integer",
+                "examples": [
+                  36299720
+                ]
+              },
+              "external": {
+                "type": "integer",
+                "examples": [
+                  38532849
+                ]
+              },
+              "arrayBuffers": {
+                "type": "integer",
+                "examples": [
+                  36937620
+                ]
+              }
+            },
+            "required": []
+          },
+          "cpuUsage": {
+            "type": "object",
+            "properties": {
+              "user": {
+                "type": "integer",
+                "examples": [
+                  5757847
+                ]
+              },
+              "system": {
+                "type": "integer",
+                "examples": [
+                  3340331
+                ]
+              }
+            },
+            "required": []
+          },
+          "pid": {
+            "type": "integer",
+            "examples": [
+              160
+            ]
+          },
+          "logger": {
+            "type": "object",
+            "properties": {
+              "console": {
+                "type": "string",
+                "examples": [
+                  "info"
+                ]
+              },
+              "file": {
+                "type": "string",
+                "examples": [
+                  "info"
+                ]
+              },
+              "syslog": {
+                "type": "string",
+                "examples": [
+                  "warning"
+                ]
+              }
+            },
+            "required": []
+          },
+          "routePrefix": {
+            "type": "string",
+            "examples": [
+              "admin"
+            ]
+          },
+          "prevUptime": {
+            "type": "number",
+            "examples": [
+              3714.3879973
+            ]
+          }
+        }
+      },
+      "required": []
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "myresults",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "method",
+      "library": "Array",
+      "method": "filter",
+      "args": [
+        null,
+        "ƒ_query_1"
+      ],
+      "view": {
+        "row": 1,
+        "col": 1
+      }
+    },
+    {
+      "id": 4,
+      "type": "method",
+      "library": "Array",
+      "method": "map",
+      "args": [
+        null,
+        "ƒ_map_1"
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      }
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 4,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 6,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 4,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "myresults",
+        "ptr": ""
+      }
+    },
+    {
+      "id": 7,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "results",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/0/value"
+      }
+    }
+  ],
+  "functions": [
+    {
+      "incoming": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "examples": [
+                "AdminEssentials"
+              ]
+            },
+            "package_id": {
+              "type": "string",
+              "examples": [
+                "@itential/app-admin_essentials"
+              ]
+            },
+            "version": {
+              "type": "string",
+              "examples": [
+                "2%2E25%2E42-2021%2E1%2E47%2E0"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "examples": [
+                "Application"
+              ]
+            },
+            "description": {
+              "type": "string",
+              "examples": [
+                "Itential Automation Platform's administration suite%2E"
+              ]
+            },
+            "state": {
+              "type": "string",
+              "examples": [
+                "RUNNING"
+              ]
+            },
+            "connection": {
+              "type": [
+                "null",
+                "object"
+              ]
+            },
+            "uptime": {
+              "type": "number",
+              "examples": [
+                2288.6368981
+              ]
+            },
+            "memoryUsage": {
+              "type": "object",
+              "properties": {
+                "rss": {
+                  "type": "integer",
+                  "examples": [
+                    106713088
+                  ]
+                },
+                "heapTotal": {
+                  "type": "integer",
+                  "examples": [
+                    36802560
+                  ]
+                },
+                "heapUsed": {
+                  "type": "integer",
+                  "examples": [
+                    35547160
+                  ]
+                },
+                "external": {
+                  "type": "integer",
+                  "examples": [
+                    38572292
+                  ]
+                },
+                "arrayBuffers": {
+                  "type": "integer",
+                  "examples": [
+                    36977063
+                  ]
+                }
+              },
+              "required": []
+            },
+            "cpuUsage": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "integer",
+                  "examples": [
+                    4506120
+                  ]
+                },
+                "system": {
+                  "type": "integer",
+                  "examples": [
+                    2536119
+                  ]
+                }
+              },
+              "required": []
+            },
+            "pid": {
+              "type": [
+                "integer",
+                "number"
+              ],
+              "examples": [
+                160
+              ]
+            },
+            "logger": {
+              "type": "object",
+              "properties": {
+                "console": {
+                  "type": "string",
+                  "examples": [
+                    "info"
+                  ]
+                },
+                "file": {
+                  "type": "string",
+                  "examples": [
+                    "info"
+                  ]
+                },
+                "syslog": {
+                  "type": "string",
+                  "examples": [
+                    "warning"
+                  ]
+                }
+              },
+              "required": []
+            },
+            "routePrefix": {
+              "type": "string",
+              "examples": [
+                "admin"
+              ]
+            },
+            "prevUptime": {
+              "type": "number",
+              "examples": [
+                2287.6362028
+              ]
+            }
+          },
+          "required": [],
+          "$id": "element"
+        },
+        {
+          "title": "index",
+          "type": "number",
+          "optional": true,
+          "$id": "index"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "examples": [
+                  "AdminEssentials"
+                ]
+              },
+              "package_id": {
+                "type": "string",
+                "examples": [
+                  "@itential/app-admin_essentials"
+                ]
+              },
+              "version": {
+                "type": "string",
+                "examples": [
+                  "2%2E25%2E42-2021%2E1%2E47%2E0"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "examples": [
+                  "Application"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "examples": [
+                  "Itential Automation Platform's administration suite%2E"
+                ]
+              },
+              "state": {
+                "type": "string",
+                "examples": [
+                  "RUNNING"
+                ]
+              },
+              "connection": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "uptime": {
+                "type": "number",
+                "examples": [
+                  2288.6368981
+                ]
+              },
+              "memoryUsage": {
+                "type": "object",
+                "properties": {
+                  "rss": {
+                    "type": "integer",
+                    "examples": [
+                      106713088
+                    ]
+                  },
+                  "heapTotal": {
+                    "type": "integer",
+                    "examples": [
+                      36802560
+                    ]
+                  },
+                  "heapUsed": {
+                    "type": "integer",
+                    "examples": [
+                      35547160
+                    ]
+                  },
+                  "external": {
+                    "type": "integer",
+                    "examples": [
+                      38572292
+                    ]
+                  },
+                  "arrayBuffers": {
+                    "type": "integer",
+                    "examples": [
+                      36977063
+                    ]
+                  }
+                },
+                "required": []
+              },
+              "cpuUsage": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "integer",
+                    "examples": [
+                      4506120
+                    ]
+                  },
+                  "system": {
+                    "type": "integer",
+                    "examples": [
+                      2536119
+                    ]
+                  }
+                },
+                "required": []
+              },
+              "pid": {
+                "type": [
+                  "integer",
+                  "number"
+                ],
+                "examples": [
+                  160
+                ]
+              },
+              "logger": {
+                "type": "object",
+                "properties": {
+                  "console": {
+                    "type": "string",
+                    "examples": [
+                      "info"
+                    ]
+                  },
+                  "file": {
+                    "type": "string",
+                    "examples": [
+                      "info"
+                    ]
+                  },
+                  "syslog": {
+                    "type": "string",
+                    "examples": [
+                      "warning"
+                    ]
+                  }
+                },
+                "required": []
+              },
+              "routePrefix": {
+                "type": "string",
+                "examples": [
+                  "admin"
+                ]
+              },
+              "prevUptime": {
+                "type": "number",
+                "examples": [
+                  2287.6362028
+                ]
+              }
+            },
+            "required": []
+          },
+          "$id": "array",
+          "optional": true
+        },
+        {
+          "$id": "thisArg",
+          "type": "object",
+          "properties": {},
+          "isContext": true,
+          "isIndexed": true
+        }
+      ],
+      "outgoing": [
+        {
+          "title": "return",
+          "type": "boolean",
+          "$id": "return"
+        }
+      ],
+      "functions": [],
+      "name": "ƒ_query_1",
+      "steps": [
+        {
+          "id": 3,
+          "type": "declaration",
+          "library": "Array",
+          "method": "new Array",
+          "args": [
+            "@itentialopensource/adapter-gitlab",
+            "@itentialopensource/adapter-bitbucket",
+            "@itentialopensource/adapter-github"
+          ],
+          "view": {
+            "row": 2,
+            "col": 2
+          },
+          "polymorphIndex": 0
+        },
+        {
+          "id": 4,
+          "type": "method",
+          "library": "Array",
+          "method": "includes",
+          "args": [
+            null,
+            null,
+            null
+          ],
+          "view": {
+            "row": 2,
+            "col": 3
+          }
+        },
+        {
+          "id": 5,
+          "type": "assign",
+          "from": {
+            "location": "declaration",
+            "name": 3,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "method",
+            "name": 4,
+            "ptr": "/args/0/value"
+          }
+        },
+        {
+          "id": 6,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "element",
+            "ptr": "/package_id"
+          },
+          "to": {
+            "location": "method",
+            "name": 4,
+            "ptr": "/args/1/value"
+          }
+        },
+        {
+          "id": 7,
+          "type": "assign",
+          "from": {
+            "location": "method",
+            "name": 4,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "outgoing",
+            "name": "return",
+            "ptr": ""
+          }
+        }
+      ],
+      "view": {
+        "col": 3,
+        "row": 4
+      },
+      "id": "ƒ_query_1",
+      "comments": []
+    },
+    {
+      "incoming": [
+        {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "integer",
+            "string",
+            "object",
+            "null"
+          ],
+          "$id": "currentValue"
+        },
+        {
+          "title": "index",
+          "type": "number",
+          "optional": true,
+          "$id": "index"
+        },
+        {
+          "type": "array",
+          "$id": "array",
+          "optional": true
+        },
+        {
+          "$id": "thisArg",
+          "type": "object",
+          "properties": {},
+          "isContext": true,
+          "isThis": true,
+          "isIndexed": true
+        }
+      ],
+      "outgoing": [
+        {
+          "title": "newValue",
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "integer",
+            "string",
+            "object",
+            "null"
+          ],
+          "editable": true,
+          "$id": "newValue"
+        }
+      ],
+      "functions": [],
+      "name": "ƒ_map_1",
+      "steps": [
+        {
+          "id": 1,
+          "type": "method",
+          "library": "Object",
+          "method": "optional chaining",
+          "args": [
+            null,
+            "id"
+          ],
+          "view": {
+            "row": 1,
+            "col": 1
+          }
+        },
+        {
+          "id": 2,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "currentValue",
+            "ptr": ""
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/0/value"
+          }
+        },
+        {
+          "id": 3,
+          "type": "assign",
+          "from": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "outgoing",
+            "name": "newValue",
+            "ptr": ""
+          }
+        }
+      ],
+      "view": {
+        "col": 1,
+        "row": 4
+      },
+      "id": "ƒ_map_1",
+      "comments": []
+    }
+  ],
+  "comments": [],
+  "view": {
+    "col": 3,
+    "row": 5
+  },
+  "created": "2022-11-18T18:18:22.396Z",
+  "createdBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "lastUpdated": "2022-11-18T18:18:22.396Z",
+  "lastUpdatedBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "version": "3.17.7-2021.1.7",
+  "tags": []
+}

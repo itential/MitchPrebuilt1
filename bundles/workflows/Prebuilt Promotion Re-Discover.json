@@ -1,0 +1,592 @@
+{
+  "canvasVersion": 1,
+  "created": "2022-03-08T15:20:46.127Z",
+  "createdVersion": "5.40.5-2021.1.52.0",
+  "created_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "description": null,
+  "font_size": 12,
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "internalURL": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "internalURL"
+    ]
+  },
+  "lastUpdatedVersion": "5.40.5-2021.1.89.0",
+  "last_updated": "2022-11-18T18:18:22.068Z",
+  "last_updated_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "name": "Prebuilt Promotion Re-Discover",
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "internalURL": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      }
+    }
+  },
+  "tasks": {
+    "5979": {
+      "name": "componentDiscovery",
+      "canvasName": "componentDiscovery",
+      "summary": "Performs discovery on Automation Catalogs or Workflows",
+      "description": "Discovers any referenced components within automation catalogs",
+      "location": "Application",
+      "locationType": null,
+      "app": "AppArtifacts",
+      "type": "automatic",
+      "displayName": "AppArtifacts",
+      "variables": {
+        "incoming": {
+          "entryPoint": "$var.b668.discoveryEntryPoint"
+        },
+        "outgoing": {
+          "discovery": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.36930232558139536,
+      "y": 0.5346153846153846,
+      "scheduled": false
+    },
+    "7393": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "mergeFormWithDiscovery",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "605b86f821c795008dc26118",
+          "variableMap": {
+            "formOutput": "$var.d69a.export",
+            "discoveryOutput": "$var.5979.discovery"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "formInput": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.46190476190476193,
+      "y": 0.5228136882129277,
+      "task_name": "mergeFormWithDiscovery",
+      "retrySettings": null
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": -0.5730232558139535,
+      "y": 0.5038461538461538
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 1.171904761904762,
+      "y": 0.529467680608365
+    },
+    "5dec": {
+      "name": "gatherInternalGET",
+      "canvasName": "gatherInternalGET",
+      "summary": "Gather Selected Artifact Info",
+      "description": "Gather Selected Artifact Info",
+      "location": "Application",
+      "app": "AppArtifacts",
+      "displayName": "AppArtifacts",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "internalURL": "$var.job.internalURL"
+        },
+        "outgoing": {
+          "responseBody": null
+        },
+        "error": ""
+      },
+      "view": "/app_artifacts/views/tasks/gatherInternalGET",
+      "deprecated": false,
+      "groups": [],
+      "x": -0.4306976744186046,
+      "y": 0.5128205128205128,
+      "scheduled": false
+    },
+    "76d1": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "convertArtifactInfoToForm",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6210015da161ae00ef6164b4",
+          "variableMap": {
+            "input": "$var.5dec.responseBody"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "output": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": -0.266046511627907,
+      "y": 0.5064102564102564,
+      "task_name": "convertArtifactInfoToForm",
+      "retrySettings": null
+    },
+    "b668": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "convertFormOutputToDiscoveryFormat",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "5f7caed7a6f94b2e4b558b71",
+          "variableMap": {
+            "formOutput": "$var.d69a.export"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "discoveryEntryPoint": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.20372093023255813,
+      "y": 0.5128205128205128,
+      "task_name": "convertFormOutputToDiscoveryFormat",
+      "retrySettings": null
+    },
+    "bd16": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "Confirm",
+      "description": "Confirm",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Confirm Artifact Update",
+          "message": "Please confirm correctness of the up to date list of components presented by the previous task.",
+          "body": "Confirm button will update the list of components inside the Admin Essentials application.<br>Retry will revert to the previous task, so you can pick and choose what documents you may want to omit before discovery.",
+          "variables": {},
+          "btn_success": "CONFIRM",
+          "btn_failure": "RETRY"
+        },
+        "outgoing": {},
+        "error": ""
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": 0.6628571428571428,
+      "y": 0.5218631178707225,
+      "scheduled": false
+    },
+    "2b81": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "Failed Discovery",
+      "description": "View data in a pretty format",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Failed Discovery",
+          "message": "Some selected component(s) caused the discovery to fail.<br>Please try again",
+          "body": "",
+          "variables": {},
+          "btn_success": "Try Again",
+          "btn_failure": ""
+        },
+        "outgoing": {},
+        "error": ""
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": 0.4027906976744186,
+      "y": 0.7705128205128206,
+      "scheduled": false
+    },
+    "8ed7": {
+      "name": "createPublishedArtifactFromScratch",
+      "canvasName": "createPublishedArtifactFromScratch",
+      "summary": "Creates artifact for publishing without DB calls",
+      "description": "Creates JSON object containing artifact file structure and all associated data from input tasks without touching database",
+      "location": "Application",
+      "locationType": null,
+      "app": "AppArtifacts",
+      "type": "automatic",
+      "displayName": "AppArtifacts",
+      "variables": {
+        "incoming": {
+          "artifactData": "$var.eb15.mata",
+          "modules": "$var.b3c0.responseBody",
+          "packageJson": "$var.eb15.packageJSON"
+        },
+        "outgoing": {
+          "callback": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.9247619047619048,
+      "y": 0.5313688212927756,
+      "scheduled": false
+    },
+    "eb15": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "createArtifactForPublish",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "605b870f21c795008dc26119",
+          "variableMap": {
+            "AEartifactInfo": "$var.5dec.responseBody",
+            "formOutput": "$var.b723.export",
+            "discovery": "$var.5979.discovery"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "mata": null,
+          "packageJSON": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.7257142857142858,
+      "y": 0.5209125475285171,
+      "task_name": "createArtifactForPublish",
+      "retrySettings": null
+    },
+    "cd71": {
+      "name": "replaceArtifactAdminEssentials",
+      "canvasName": "replaceArtifactAdminEssentials",
+      "summary": "Replaces an artifact in AE via direct mongo injection",
+      "description": "Replaces an artifact created from a published artifact in admin essentials",
+      "location": "Application",
+      "locationType": null,
+      "app": "AppArtifacts",
+      "type": "automatic",
+      "displayName": "AppArtifacts",
+      "variables": {
+        "incoming": {
+          "artifactBundle": "$var.8ed7.callback"
+        },
+        "outgoing": {
+          "modifiedCount": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.0657142857142856,
+      "y": 0.5342205323193916,
+      "scheduled": false
+    },
+    "b3c0": {
+      "name": "gatherInternalGET",
+      "canvasName": "gatherInternalGET",
+      "summary": "Gather GET call",
+      "description": "Gather GET call",
+      "location": "Application",
+      "app": "AppArtifacts",
+      "displayName": "AppArtifacts",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "internalURL": "/health/modules"
+        },
+        "outgoing": {
+          "responseBody": null
+        },
+        "error": ""
+      },
+      "view": "/app_artifacts/views/tasks/gatherInternalGET",
+      "deprecated": false,
+      "groups": [],
+      "x": 0.8076190476190476,
+      "y": 0.5304182509505704,
+      "scheduled": false
+    },
+    "d69a": {
+      "name": "ShowJsonForm",
+      "canvasName": "ShowJsonForm",
+      "summary": "Show Current Components",
+      "description": "Show Current Components",
+      "location": "Application",
+      "app": "JsonForms",
+      "displayName": "JsonForms",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "form_id": "Re-Discovery Components Form",
+          "instance_data": "$var.2e2b.componentEditorFormInput"
+        },
+        "outgoing": {
+          "export": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "view": "/json-forms/task/ShowJsonForm",
+      "deprecated": false,
+      "groups": [],
+      "x": 0.061395348837209304,
+      "y": 0.5,
+      "scheduled": false
+    },
+    "b723": {
+      "name": "ShowJsonForm",
+      "canvasName": "ShowJsonForm",
+      "summary": "Show New Components",
+      "description": "Show New Components",
+      "location": "Application",
+      "app": "JsonForms",
+      "displayName": "JsonForms",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "form_id": "Re-Discovery Components Form",
+          "instance_data": "$var.7393.formInput"
+        },
+        "outgoing": {
+          "export": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "view": "/json-forms/task/ShowJsonForm",
+      "deprecated": false,
+      "groups": [],
+      "x": 0.5786046511627907,
+      "y": 0.5192307692307693,
+      "scheduled": false
+    },
+    "2e2b": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "translateSchemaPushBundles",
+      "description": "Takes in the output of the componentDiscovery task in appartifacts and outputs a format that can be used in a form where the components can be edited.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "621002baa161ae00ef6164b5",
+          "variableMap": {
+            "componentDiscoveryOutput": "$var.76d1.output"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "componentEditorFormInput": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": -0.10697674418604651,
+      "y": 0.5012820512820513,
+      "task_name": "translateSchemaPushBundles",
+      "retrySettings": null
+    }
+  },
+  "transitions": {
+    "5979": {
+      "7393": {
+        "type": "standard",
+        "state": "success"
+      },
+      "2b81": {
+        "type": "standard",
+        "state": "error"
+      }
+    },
+    "6355": {},
+    "7393": {
+      "b723": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_start": {
+      "5dec": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "5dec": {
+      "76d1": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "76d1": {
+      "2e2b": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b668": {
+      "5979": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "bd16": {
+      "5dec": {
+        "type": "revert",
+        "state": "failure"
+      },
+      "eb15": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "2b81": {
+      "5dec": {
+        "type": "revert",
+        "state": "success"
+      }
+    },
+    "8ed7": {
+      "cd71": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "eb15": {
+      "b3c0": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "cd71": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b3c0": {
+      "8ed7": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "d69a": {
+      "b668": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b723": {
+      "bd16": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "2e2b": {
+      "d69a": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "type": "automation",
+  "tags": [],
+  "groups": []
+}
