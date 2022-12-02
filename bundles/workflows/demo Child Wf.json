@@ -1,0 +1,158 @@
+{
+  "name": "demo Child Wf",
+  "type": "automation",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": 0.3396078431372549,
+      "y": 0.4963942307692308
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.7349019607843137,
+      "y": 0.49278846153846156
+    },
+    "4a81": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Demo JST",
+      "description": "Demo JST",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6377bda7f0508300e7c96023",
+          "variableMap": {
+            "inputString": "$var.job.inputString"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "outputString": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.49747242647058826,
+      "y": 0.5000000000000001,
+      "task_name": "Demo JST",
+      "retrySettings": null
+    },
+    "e945": {
+      "name": "newVariable",
+      "canvasName": "newVariable",
+      "summary": "Create a Job Variable",
+      "description": "Create a new Job variable by Job ID and assign it a value.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "name": "outputString",
+          "value": "$var.4a81.outputString"
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.6266666666666667,
+      "y": 0.4951923076923077
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "4a81": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "4a81": {
+      "e945": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "e945": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "font_size": 12,
+  "last_updated": "2022-11-18T17:27:35.663Z",
+  "last_updated_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "lastUpdatedVersion": "5.40.5-2021.1.89.0",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "inputString": {
+        "$id": "inputString",
+        "type": "string"
+      }
+    },
+    "required": [
+      "inputString"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "inputString": {
+        "$id": "inputString",
+        "type": "string"
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "outputString": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    }
+  },
+  "created": "2022-11-18T17:15:34.412Z",
+  "created_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "createdVersion": "5.40.5-2021.1.89.0",
+  "preAutomationTime": 0,
+  "sla": 0,
+  "description": "demo Child Wf",
+  "tags": [],
+  "groups": []
+}

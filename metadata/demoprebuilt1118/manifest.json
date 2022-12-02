@@ -1,0 +1,53 @@
+{
+  "bundleName": "@dsup/demoprebuilt1118",
+  "version": "0.0.1",
+  "fingerprint": "638a4e80b2b60d008618fc4e",
+  "createdEpoch": "1670008448445",
+  "artifacts": [
+    {
+      "id": "demo Operations Manager Automation",
+      "name": "demo Operations Manager Automation",
+      "type": "automation",
+      "location": "/bundles/automations/demo Operations Manager Automation.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "demo Parent Workflow",
+      "name": "demo Parent Workflow",
+      "type": "workflow",
+      "location": "/bundles/workflows/demo Parent Workflow.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "demo Child Wf",
+      "name": "demo Child Wf",
+      "type": "workflow",
+      "location": "/bundles/workflows/demo Child Wf.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "demo JSON Form",
+      "name": "demo JSON Form",
+      "type": "json-forms",
+      "location": "/bundles/json_forms/demo JSON Form.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "6377bda7f0508300e7c96023",
+      "name": "demo JST",
+      "type": "transformation",
+      "location": "/bundles/transformations/demo JST.json",
+      "properties": {
+        "entryPoint": false
+      }
+    }
+  ]
+}

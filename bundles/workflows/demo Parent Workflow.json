@@ -1,0 +1,248 @@
+{
+  "name": "demo Parent Workflow",
+  "type": "automation",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": -0.08705882352941176,
+      "y": 0.5012019230769231
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.5843137254901961,
+      "y": 0.5096153846153846
+    },
+    "e77": {
+      "name": "newVariable",
+      "canvasName": "newVariable",
+      "summary": "Create a Job Variable",
+      "description": "Create a new Job variable by Job ID and assign it a value.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "name": "sampleString",
+          "value": "sampleString"
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.05019607843137255,
+      "y": 0.5
+    },
+    "28d7": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Run Child Job",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "demo Child Wf",
+          "variables": {
+            "inputString": {
+              "editable": true,
+              "task": "job",
+              "value": "inputString"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "job",
+      "x": 0.3247058823529412,
+      "y": 0.5036057692307693
+    },
+    "e6cc": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query inputString from formData",
+      "description": "Query inputString from formData",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "inputString",
+          "obj": "$var.job.formData"
+        },
+        "outgoing": {
+          "return_data": "$var.job.inputString"
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.17333333333333334,
+      "y": 0.5048076923076923,
+      "scheduled": false
+    },
+    "84c9": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query outputString from child workflow",
+      "description": "Query outputString from child workflow",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "outputString",
+          "obj": "$var.28d7.job_details"
+        },
+        "outgoing": {
+          "return_data": "$var.job.inputString"
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.46431372549019606,
+      "y": 0.5072115384615384,
+      "scheduled": false
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "e77": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "e77": {
+      "e6cc": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "28d7": {
+      "84c9": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "e6cc": {
+      "28d7": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "84c9": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "font_size": 12,
+  "last_updated": "2022-11-18T17:28:19.540Z",
+  "last_updated_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "lastUpdatedVersion": "5.40.5-2021.1.89.0",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "formData": {
+        "title": "obj",
+        "type": "object",
+        "properties": {},
+        "examples": [
+          {
+            "name": "value"
+          }
+        ]
+      }
+    },
+    "required": [
+      "formData"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "formData": {
+        "title": "obj",
+        "type": "object",
+        "properties": {},
+        "examples": [
+          {
+            "name": "value"
+          }
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "sampleString": {
+        "type": "string"
+      },
+      "inputString": {
+        "title": "return_data",
+        "type": [
+          "string",
+          "number",
+          "object",
+          "integer",
+          "array",
+          "boolean",
+          "null"
+        ],
+        "examples": [
+          "value"
+        ]
+      }
+    }
+  },
+  "created": "2022-11-18T17:14:53.369Z",
+  "created_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "createdVersion": "5.40.5-2021.1.89.0",
+  "preAutomationTime": 0,
+  "sla": 0,
+  "description": "demo Parent Workflow",
+  "tags": [],
+  "groups": []
+}

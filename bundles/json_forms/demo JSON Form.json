@@ -1,0 +1,50 @@
+{
+  "id": "6377bf526535a600d978dbf2",
+  "created": "2022-11-18T17:22:26.560Z",
+  "createdBy": "admin@pronghorn",
+  "lastUpdated": "2022-11-18T17:23:01.226Z",
+  "lastUpdatedBy": "admin@pronghorn",
+  "name": "demo JSON Form",
+  "description": "demo JSON Form",
+  "struct": {
+    "type": "object",
+    "description": "",
+    "items": [
+      {
+        "nodeId": "b0eb32c1-759c-4df8-9a73-c95937aa742d",
+        "type": "string",
+        "title": "inputString",
+        "description": "",
+        "placeholder": "Enter text",
+        "required": true,
+        "readOnly": false,
+        "binding": false,
+        "rel": "item",
+        "targetPointer": "/default"
+      }
+    ]
+  },
+  "schema": {
+    "title": "demo JSON Form",
+    "description": "demo JSON Form",
+    "type": "object",
+    "required": [
+      "inputString"
+    ],
+    "properties": {
+      "inputString": {
+        "type": "string",
+        "title": "inputString",
+        "description": ""
+      }
+    }
+  },
+  "uiSchema": {
+    "inputString": {
+      "ui:placeholder": "Enter text"
+    }
+  },
+  "bindingSchema": {},
+  "validationSchema": {},
+  "version": "2020.1"
+}

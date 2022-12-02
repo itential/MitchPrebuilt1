@@ -1,0 +1,82 @@
+{
+  "_id": "6377bda7f0508300e7c96023",
+  "name": "demo JST",
+  "description": "demo JST",
+  "incoming": [
+    {
+      "$id": "inputString",
+      "type": "string"
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "outputString",
+      "type": "string"
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "method",
+      "library": "String",
+      "method": "concat",
+      "args": [
+        "The following string has been processed by the Child Workflow: ",
+        null,
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 1
+      }
+    },
+    {
+      "id": 3,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "outputString",
+        "ptr": ""
+      }
+    },
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "inputString",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/1/value"
+      }
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 1,
+    "row": 5
+  },
+  "created": "2022-11-18T17:15:19.118Z",
+  "createdBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "lastUpdated": "2022-12-02T18:14:15.989Z",
+  "lastUpdatedBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "version": "3.17.7-2021.1.9",
+  "tags": []
+}
