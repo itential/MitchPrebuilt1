@@ -1,0 +1,996 @@
+{
+  "canvasVersion": 1,
+  "created": "2022-04-27T20:22:06.363Z",
+  "createdVersion": "5.40.5-2021.1.72.0",
+  "created_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "description": "",
+  "font_size": 12,
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "OrganizationName": {
+        "title": "owner",
+        "type": "string"
+      },
+      "ProjectName": {
+        "title": "repo",
+        "type": "string"
+      },
+      "TargetBranch": {
+        "title": "branch",
+        "type": "string"
+      },
+      "adapter_id": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "MRType": {
+        "title": "str",
+        "type": "string",
+        "examples": [
+          "Hello"
+        ]
+      },
+      "commitMessage": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "packageJsonName": {
+        "$id": "packageJsonName",
+        "type": "string",
+        "examples": [
+          "sdfsa"
+        ]
+      },
+      "artifact": {
+        "type": "object",
+        "examples": [
+          {
+            "name": "value"
+          }
+        ]
+      },
+      "privateRepo": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "OrganizationName",
+      "ProjectName",
+      "TargetBranch",
+      "adapter_id",
+      "MRType",
+      "commitMessage",
+      "packageJsonName",
+      "artifact",
+      "privateRepo"
+    ]
+  },
+  "lastUpdatedVersion": "5.40.5-2021.1.89.0",
+  "last_updated": "2022-11-18T18:18:22.088Z",
+  "last_updated_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "name": "Prebuilt Promotion Github Create Link",
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "OrganizationName": {
+        "title": "owner",
+        "type": "string"
+      },
+      "ProjectName": {
+        "title": "repo",
+        "type": "string"
+      },
+      "TargetBranch": {
+        "title": "branch",
+        "type": "string"
+      },
+      "adapter_id": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "MRType": {
+        "title": "str",
+        "type": "string",
+        "examples": [
+          "Hello"
+        ]
+      },
+      "commitMessage": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "packageJsonName": {
+        "$id": "packageJsonName",
+        "type": "string",
+        "examples": [
+          "sdfsa"
+        ]
+      },
+      "artifact": {
+        "type": "object",
+        "examples": [
+          {
+            "name": "value"
+          }
+        ]
+      },
+      "privateRepo": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      }
+    }
+  },
+  "tasks": {
+    "3353": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Create new Branch",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Prebuilt Promotion Github Create Branch",
+          "variables": {
+            "owner": {
+              "editable": true,
+              "task": "job",
+              "value": "OrganizationName"
+            },
+            "repo": {
+              "editable": true,
+              "task": "job",
+              "value": "ProjectName"
+            },
+            "Targetbranch": {
+              "editable": true,
+              "task": "job",
+              "value": "TargetBranch"
+            },
+            "adapter_id": {
+              "editable": true,
+              "task": "job",
+              "value": "adapter_id"
+            },
+            "MRType": {
+              "editable": true,
+              "task": "job",
+              "value": "MRType"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "job",
+      "x": 1.1699204627621114,
+      "y": 0.5292171995589857
+    },
+    "5153": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Run Evaluation Task",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "repo",
+                  "operand_1": {
+                    "variable": "job_details",
+                    "task": "ac6c"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.1851048445408532,
+      "y": 0.7475192943770672
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": 0.12044817927170869,
+      "y": 0.8902291917973462
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 1.937816341287057,
+      "y": 0.9625137816979051
+    },
+    "fb6e": {
+      "name": "postOrgsOrgRepos",
+      "canvasName": "postOrgsOrgRepos",
+      "summary": "Create a new repository for the authenticated user. OAuth users must supply
+repo scope.",
+      "description": "Create a new repository for the authenticated user. OAuth users must supply
+repo scope.",
+      "location": "Adapter",
+      "locationType": "GitHub",
+      "app": "GitHub",
+      "type": "automatic",
+      "displayName": "GitHub",
+      "variables": {
+        "incoming": {
+          "org": "$var.job.OrganizationName",
+          "body": "$var.b761.merged_object",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.4960231381055675,
+      "y": 0.7618522601984564,
+      "scheduled": false
+    },
+    "fb27": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "get new Branch name",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "MRPayload.head",
+          "obj": "$var.3353.job_details"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.3029645697758496,
+      "y": 0.538037486218302,
+      "scheduled": false
+    },
+    "6a7d": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Run Child Job",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Prebuilt Promotion Github New Commit",
+          "variables": {
+            "artifact_array": {
+              "editable": true,
+              "task": "5d82",
+              "value": "createFiles"
+            },
+            "owner": {
+              "editable": true,
+              "task": "job",
+              "value": "OrganizationName"
+            },
+            "repo": {
+              "editable": true,
+              "task": "job",
+              "value": "ProjectName"
+            },
+            "adapter_id": {
+              "editable": true,
+              "task": "job",
+              "value": "adapter_id"
+            },
+            "commitMessage": {
+              "editable": true,
+              "task": "job",
+              "value": "commitMessage"
+            },
+            "branch": {
+              "editable": true,
+              "task": "fb27",
+              "value": "return_data"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "job",
+      "x": 1.6037599421547362,
+      "y": 0.5545755237045203
+    },
+    "870c": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Run Evaluation Task",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "failed",
+                  "operand_1": {
+                    "variable": "job_details",
+                    "task": "ac6c"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": false,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.1917320028510334,
+      "y": 0.9425403225806451
+    },
+    "ac6c": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Run Child Job",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Prebuilt Promotion Github Check OrgRepo",
+          "variables": {
+            "org": {
+              "editable": true,
+              "task": "job",
+              "value": "OrganizationName"
+            },
+            "adapter_id": {
+              "editable": true,
+              "task": "job",
+              "value": "adapter_id"
+            },
+            "repoName": {
+              "editable": true,
+              "task": "job",
+              "value": "ProjectName"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "job",
+      "x": 1.0280112044817926,
+      "y": 0.9384800965018094
+    },
+    "c9a5": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Github Add Files",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Prebuilt Promotion Github Add Files",
+          "variables": {
+            "packageJsonName": {
+              "editable": true,
+              "task": "job",
+              "value": "packageJsonName"
+            },
+            "artifact": {
+              "editable": true,
+              "task": "job",
+              "value": "artifact"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "job",
+      "x": 0.6587129428778019,
+      "y": 0.918412348401323
+    },
+    "b64f": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query pushedArray",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "pushedArray",
+          "obj": "$var.c9a5.job_details"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.8652886671418389,
+      "y": 0.9193548387096774,
+      "scheduled": false
+    },
+    "b761": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge new Repo body",
+      "description": "Merge new Repo body",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "name",
+              "value": {
+                "task": "job",
+                "variable": "ProjectName",
+                "editable": true
+              }
+            },
+            {
+              "key": "auto_init",
+              "value": {
+                "task": "static",
+                "variable": true
+              }
+            },
+            {
+              "key": "private",
+              "value": {
+                "task": "job",
+                "variable": "privateRepo",
+                "editable": true
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.269703543022415,
+      "y": 0.7442116868798236
+    },
+    "5b2f": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Create New Repo",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Prebuilt Promotion Github New Commit",
+          "variables": {
+            "artifact_array": {
+              "editable": true,
+              "task": "b64f",
+              "value": "return_data"
+            },
+            "owner": {
+              "editable": true,
+              "task": "job",
+              "value": "OrganizationName"
+            },
+            "repo": {
+              "editable": true,
+              "task": "job",
+              "value": "ProjectName"
+            },
+            "adapter_id": {
+              "editable": true,
+              "task": "job",
+              "value": "adapter_id"
+            },
+            "commitMessage": {
+              "editable": true,
+              "task": "job",
+              "value": "commitMessage"
+            },
+            "branch": {
+              "editable": true,
+              "task": "static",
+              "value": "main"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "job",
+      "x": 1.7744034707158352,
+      "y": 0.7717750826901875
+    },
+    "41f6": {
+      "name": "postReposOwnerRepoPulls",
+      "canvasName": "postReposOwnerRepoPulls",
+      "summary": "Create a pull request.",
+      "description": "Create a pull request.",
+      "location": "Adapter",
+      "locationType": "GitHub",
+      "app": "GitHub",
+      "type": "automatic",
+      "displayName": "GitHub",
+      "variables": {
+        "incoming": {
+          "owner": "$var.job.OrganizationName",
+          "repo": "$var.job.ProjectName",
+          "body": "$var.504d.return_data",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.9255242227042662,
+      "y": 0.5764705882352941,
+      "scheduled": false
+    },
+    "504d": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "get MR payload",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "MRPayload",
+          "obj": "$var.3353.job_details"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.737527114967462,
+      "y": 0.5552941176470588,
+      "scheduled": false
+    },
+    "5d82": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "filterArtifactArrayToOnlyCreateFiles",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6287f3480f8090010e7a4b89",
+          "variableMap": {
+            "artifactArray": "$var.b64f.return_data"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "createFiles": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.4136321195144725,
+      "y": 0.5416164053075995,
+      "task_name": "filterArtifactArrayToOnlyCreateFiles",
+      "retrySettings": null
+    },
+    "a67d": {
+      "name": "iapRunAdapterHealthcheck",
+      "canvasName": "iapRunAdapterHealthcheck",
+      "summary": "Runs healthcheck script for adapter",
+      "description": "Runs healthcheck script for adapter",
+      "location": "Adapter",
+      "locationType": "GitHub",
+      "app": "GitHub",
+      "type": "automatic",
+      "displayName": "GitHub",
+      "variables": {
+        "incoming": {
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.27637721755368816,
+      "y": 0.8890229191797346,
+      "scheduled": false
+    },
+    "30ed": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Run Evaluation Task",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "result",
+                    "task": "a67d"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.48366013071895425,
+      "y": 0.8890229191797346
+    },
+    "9c71": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "View Data",
+      "description": "Displays a message and runtime data to an operator. This can be used to request a decision, or used for acknowledgement only.",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Adapter Healthcheck Failed",
+          "message": "Failed to connect to Github adapter. Make sure your adapter is online.",
+          "body": "Try again?",
+          "variables": {},
+          "btn_success": "Try Again",
+          "btn_failure": "Cancel Job"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": 0.4864612511671335,
+      "y": 1.0856453558504222,
+      "scheduled": false
+    }
+  },
+  "transitions": {
+    "3353": {
+      "fb27": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5153": {
+      "3353": {
+        "type": "standard",
+        "state": "success"
+      },
+      "b761": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "workflow_start": {
+      "a67d": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "72a1": {},
+    "146c": {},
+    "fb6e": {
+      "5b2f": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "fb27": {
+      "5d82": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "6a7d": {
+      "504d": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b67f": {},
+    "feed": {},
+    "8c95": {},
+    "870c": {
+      "5153": {
+        "type": "standard",
+        "state": "success"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "ac6c": {
+      "870c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "c9a5": {
+      "b64f": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b64f": {
+      "ac6c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b761": {
+      "fb6e": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5b2f": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "41f6": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "504d": {
+      "41f6": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5d82": {
+      "6a7d": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "a67d": {
+      "30ed": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "30ed": {
+      "c9a5": {
+        "type": "standard",
+        "state": "success"
+      },
+      "9c71": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "9c71": {
+      "a67d": {
+        "type": "revert",
+        "state": "success"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      }
+    }
+  },
+  "type": "automation",
+  "tags": [],
+  "groups": []
+}

@@ -1,0 +1,1537 @@
+{
+  "canvasVersion": 1,
+  "created": "2021-03-21T17:59:03.698Z",
+  "createdVersion": "5.29.14-2020.2.13",
+  "created_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "description": null,
+  "font_size": 12,
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "artifact": {
+        "type": "array"
+      },
+      "action": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "artifact",
+      "action"
+    ]
+  },
+  "lastUpdatedVersion": "5.40.5-2021.1.89.0",
+  "last_updated": "2022-11-18T18:18:22.132Z",
+  "last_updated_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "name": "Push Bundles to GitHub Commit Data",
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "artifact": {
+        "type": [
+          "array",
+          "string",
+          "boolean",
+          "integer",
+          "number",
+          "object"
+        ],
+        "examples": [
+          "updated item"
+        ]
+      },
+      "action": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "commitActions": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "name_first_nested": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "name_second_nested": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    }
+  },
+  "tasks": {
+    "1601": {
+      "name": "push",
+      "summary": "Push Item to Array",
+      "description": "Push item to a job variable array",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "job_variable": "commitActions",
+          "item_to_push": "$var.6cdf.merged_object"
+        },
+        "outgoing": {
+          "job_variable_value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>push</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Push</span> Item to Array"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Push</span> item to a job variable array"
+        }
+      ],
+      "groups": [],
+      "x": 1.54716981132075,
+      "y": 1.45343511450382
+    },
+    "2450": {
+      "name": "query",
+      "summary": "Query name (first nested)",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "name",
+          "obj": "$var.798a.current_item"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>query</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+        }
+      ],
+      "groups": [],
+      "x": 0.625102543068089,
+      "y": 0.99236641221374,
+      "scheduled": false
+    },
+    "3697": {
+      "name": "evaluation",
+      "summary": "Evaluation: Directory?",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "return_data",
+                    "task": "db0b"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": "file",
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>eval</span>uation"
+        },
+        {
+          "key": "summary",
+          "highlightString": "Run <span class='highlight-string'>Eval</span>uation Task"
+        },
+        {
+          "key": "description",
+          "highlightString": "Run an <span class='highlight-string'>eval</span>uation"
+        }
+      ],
+      "groups": [],
+      "x": 0.968006562756358,
+      "y": 1.04885496183206
+    },
+    "4001": {
+      "name": "evaluation",
+      "summary": "Evaluation: File?",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "return_data",
+                    "task": "6433"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": "file",
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>eval</span>uation"
+        },
+        {
+          "key": "summary",
+          "highlightString": "Run <span class='highlight-string'>Eval</span>uation Task"
+        },
+        {
+          "key": "description",
+          "highlightString": "Run an <span class='highlight-string'>eval</span>uation"
+        }
+      ],
+      "groups": [],
+      "x": 0.404429860541427,
+      "y": 0.745038167938931
+    },
+    "6433": {
+      "name": "query",
+      "summary": "Query type",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "type",
+          "obj": "$var.e24a.current_item"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>query</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+        }
+      ],
+      "groups": [],
+      "x": 0.332239540607055,
+      "y": 0.653435114503817,
+      "scheduled": false
+    },
+    "7554": {
+      "name": "stringConcat",
+      "summary": "Concatenate / file",
+      "description": "Concatenates a string with a second string(s). The second parameter can be a string or array.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "String",
+      "type": "automatic",
+      "variables": {
+        "incoming": {
+          "str": "$var.f401.combinedStrings",
+          "stringN": [
+            "/"
+          ]
+        },
+        "outgoing": {
+          "combinedStrings": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "app",
+          "highlightString": "<span class='highlight-string'>String</span>Methods"
+        },
+        {
+          "key": "summary",
+          "highlightString": "Concatenates <span class='highlight-string'>string</span>s together."
+        },
+        {
+          "key": "description",
+          "highlightString": "Concatenates a <span class='highlight-string'>string</span> with a second string(s). The second parameter can be a string or array."
+        }
+      ],
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.23789991796555,
+      "y": 1.44885496183206,
+      "scheduled": false,
+      "canvasName": "concat"
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": 0.10090237899918,
+      "y": 0.474809160305344,
+      "summary": "workflow_start",
+      "description": "workflow_start"
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.5813953488372093,
+      "y": 0.47368421052631576,
+      "summary": "workflow_end",
+      "description": "workflow_end"
+    },
+    "e24a": {
+      "name": "forEach",
+      "summary": "For Each Loop",
+      "description": "Iterate over each item in an array",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "data_array": "$var.job.artifact"
+        },
+        "outgoing": {
+          "current_item": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>for</span><span class='highlight-string'>Each</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>For</span> <span class='highlight-string'>Each</span> Loop"
+        },
+        {
+          "key": "description",
+          "highlightString": "Iterate over <span class='highlight-string'>each</span> item in an array"
+        }
+      ],
+      "groups": [],
+      "x": 0.312551271534044,
+      "y": 0.483969465648855,
+      "scheduled": false
+    },
+    "fcfb": {
+      "name": "newVariable",
+      "summary": "Create a Job Variable",
+      "description": "Create a new Job variable by Job ID and assign it a value.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "name": "commitActions",
+          "value": []
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "summary",
+          "highlightString": "Create a <span class='highlight-string'>Job</span> Variable"
+        },
+        {
+          "key": "description",
+          "highlightString": "Create a new <span class='highlight-string'>Job</span> variable by Job ID and assign it a value."
+        }
+      ],
+      "groups": [],
+      "x": 0.202625102543068,
+      "y": 0.488549618320611
+    },
+    "ec3b": {
+      "name": "query",
+      "summary": "Query name",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "name",
+          "obj": "$var.e24a.current_item"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>query</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+        }
+      ],
+      "groups": [],
+      "x": 0.385561936013125,
+      "y": 0.644274809160305,
+      "scheduled": false
+    },
+    "7bf5": {
+      "name": "query",
+      "summary": "Query content",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "content",
+          "obj": "$var.e24a.current_item"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>query</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+        }
+      ],
+      "groups": [],
+      "x": 0.346185397867104,
+      "y": 0.751145038167939,
+      "scheduled": false
+    },
+    "d8c5": {
+      "name": "push",
+      "summary": "Push Item to Array",
+      "description": "Push item to a job variable array",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "job_variable": "commitActions",
+          "item_to_push": "$var.babe.merged_object"
+        },
+        "outgoing": {
+          "job_variable_value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>push</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Push</span> Item to Array"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Push</span> item to a job variable array"
+        }
+      ],
+      "groups": [],
+      "x": 0.587366694011485,
+      "y": 0.656488549618321
+    },
+    "798a": {
+      "name": "forEach",
+      "summary": "Iterate first level",
+      "description": "Iterate over each item in an array",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "data_array": "$var.7bf5.return_data"
+        },
+        "outgoing": {
+          "current_item": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>for</span><span class='highlight-string'>Each</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>For</span> <span class='highlight-string'>Each</span> Loop"
+        },
+        {
+          "key": "description",
+          "highlightString": "Iterate over <span class='highlight-string'>each</span> item in an array"
+        }
+      ],
+      "groups": [],
+      "x": 0.491386382280558,
+      "y": 0.897709923664122,
+      "scheduled": false
+    },
+    "db0b": {
+      "name": "query",
+      "summary": "Query type (first nested)",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "type",
+          "obj": "$var.798a.current_item"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>query</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+        }
+      ],
+      "groups": [],
+      "x": 0.575881870385562,
+      "y": 1.05496183206107,
+      "scheduled": false
+    },
+    "b93a": {
+      "name": "query",
+      "summary": "Query content (first nested)",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "content",
+          "obj": "$var.798a.current_item"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>query</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+        }
+      ],
+      "groups": [],
+      "x": 0.62428219852338,
+      "y": 1.12213740458015,
+      "scheduled": false
+    },
+    "80bf": {
+      "name": "stringConcat",
+      "summary": "Concatenate / nested",
+      "description": "Concatenates a string with a second string(s). The second parameter can be a string or array.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "String",
+      "type": "automatic",
+      "variables": {
+        "incoming": {
+          "str": "$var.ec3b.return_data",
+          "stringN": [
+            "/"
+          ]
+        },
+        "outgoing": {
+          "combinedStrings": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "app",
+          "highlightString": "<span class='highlight-string'>String</span>Methods"
+        },
+        {
+          "key": "summary",
+          "highlightString": "Concatenates <span class='highlight-string'>string</span>s together."
+        },
+        {
+          "key": "description",
+          "highlightString": "Concatenates a <span class='highlight-string'>string</span> with a second string(s). The second parameter can be a string or array."
+        }
+      ],
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.720262510254307,
+      "y": 1.05343511450382,
+      "scheduled": false,
+      "canvasName": "concat"
+    },
+    "f401": {
+      "name": "stringConcat",
+      "summary": "Concatenate nested name",
+      "description": "Concatenates a string with a second string(s). The second parameter can be a string or array.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "String",
+      "type": "automatic",
+      "variables": {
+        "incoming": {
+          "str": "$var.80bf.combinedStrings",
+          "stringN": "$var.job.name_first_nested"
+        },
+        "outgoing": {
+          "combinedStrings": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "app",
+          "highlightString": "<span class='highlight-string'>String</span>Methods"
+        },
+        {
+          "key": "summary",
+          "highlightString": "Concatenates <span class='highlight-string'>string</span>s together."
+        },
+        {
+          "key": "description",
+          "highlightString": "Concatenates a <span class='highlight-string'>string</span> with a second string(s). The second parameter can be a string or array."
+        }
+      ],
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.857260049220673,
+      "y": 1.05343511450382,
+      "scheduled": false,
+      "canvasName": "concat"
+    },
+    "f131": {
+      "name": "forEach",
+      "summary": "Iterate second level",
+      "description": "Iterate over each item in an array",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "data_array": "$var.b93a.return_data"
+        },
+        "outgoing": {
+          "current_item": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>for</span><span class='highlight-string'>Each</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>For</span> <span class='highlight-string'>Each</span> Loop"
+        },
+        {
+          "key": "description",
+          "highlightString": "Iterate over <span class='highlight-string'>each</span> item in an array"
+        }
+      ],
+      "groups": [],
+      "x": 1.05660377358491,
+      "y": 1.18931297709924,
+      "scheduled": false
+    },
+    "a433": {
+      "name": "query",
+      "summary": "Query name (second nested)",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "name",
+          "obj": "$var.f131.current_item"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>query</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+        }
+      ],
+      "groups": [],
+      "x": 1.14520743919886,
+      "y": 1.3552036199095,
+      "scheduled": false
+    },
+    "d522": {
+      "name": "query",
+      "summary": "Query content (second nested)",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "content",
+          "obj": "$var.f131.current_item"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>query</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Query</span> Data Using 'json-query' Format"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Query</span> data using a dot/bracket notation string and a matching key/value pair."
+        }
+      ],
+      "groups": [],
+      "x": 1.15021459227468,
+      "y": 1.44457013574661,
+      "scheduled": false
+    },
+    "57b9": {
+      "name": "stringConcat",
+      "summary": "Concatenate file name",
+      "description": "Concatenates a string with a second string(s). The second parameter can be a string or array.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "String",
+      "type": "automatic",
+      "variables": {
+        "incoming": {
+          "str": "$var.7554.combinedStrings",
+          "stringN": "$var.job.name_second_nested"
+        },
+        "outgoing": {
+          "combinedStrings": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "app",
+          "highlightString": "<span class='highlight-string'>String</span>Methods"
+        },
+        {
+          "key": "summary",
+          "highlightString": "Concatenates <span class='highlight-string'>string</span>s together."
+        },
+        {
+          "key": "description",
+          "highlightString": "Concatenates a <span class='highlight-string'>string</span> with a second string(s). The second parameter can be a string or array."
+        }
+      ],
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.35684987694832,
+      "y": 1.45190839694656,
+      "scheduled": false,
+      "canvasName": "concat"
+    },
+    "6cdf": {
+      "name": "merge",
+      "summary": "Merge action data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "action",
+              "value": {
+                "task": "job",
+                "variable": "action",
+                "editable": true
+              }
+            },
+            {
+              "key": "file_path",
+              "value": {
+                "task": "57b9",
+                "variable": "combinedStrings"
+              }
+            },
+            {
+              "key": "content",
+              "value": {
+                "task": "d522",
+                "variable": "return_data"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>merge</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Merge</span> Data"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Merge</span> data into a single object"
+        }
+      ],
+      "groups": [],
+      "x": 1.45200984413454,
+      "y": 1.44580152671756
+    },
+    "f815": {
+      "name": "merge",
+      "summary": "Merge action data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "action",
+              "value": {
+                "task": "job",
+                "variable": "action",
+                "editable": true
+              }
+            },
+            {
+              "key": "file_path",
+              "value": {
+                "task": "f401",
+                "variable": "combinedStrings"
+              }
+            },
+            {
+              "key": "content",
+              "value": {
+                "task": "b93a",
+                "variable": "return_data"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>merge</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Merge</span> Data"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Merge</span> data into a single object"
+        }
+      ],
+      "groups": [],
+      "x": 1.0377358490566,
+      "y": 0.978625954198473
+    },
+    "33e4": {
+      "name": "push",
+      "summary": "Push Item to Array",
+      "description": "Push item to a job variable array",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "job_variable": "commitActions",
+          "item_to_push": "$var.f815.merged_object"
+        },
+        "outgoing": {
+          "job_variable_value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "name",
+          "highlightString": "<span class='highlight-string'>push</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Push</span> Item to Array"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Push</span> item to a job variable array"
+        }
+      ],
+      "groups": [],
+      "x": 1.14438063986874,
+      "y": 0.989312977099237
+    },
+    "9ed7": {
+      "name": "newVariable",
+      "canvasName": "newVariable",
+      "summary": "Create a Job Variable",
+      "description": "Create a new Job variable by Job ID and assign it a value.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "name": "name_first_nested",
+          "value": []
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "summary",
+          "highlightString": "Create a <span class='highlight-string'>Job</span> Variable"
+        },
+        {
+          "key": "description",
+          "highlightString": "Create a new <span class='highlight-string'>Job</span> variable by Job ID and assign it a value."
+        }
+      ],
+      "groups": [],
+      "x": 0.716738197424893,
+      "y": 0.860859728506787
+    },
+    "89c4": {
+      "name": "push",
+      "canvasName": "push",
+      "summary": "Push Item to Array",
+      "description": "Push item to a job variable array",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "job_variable": "name_first_nested",
+          "item_to_push": "$var.2450.return_data"
+        },
+        "outgoing": {
+          "job_variable_value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "description",
+          "highlightString": "Push item to a <span class='highlight-string'>job</span> variable array"
+        }
+      ],
+      "groups": [],
+      "x": 0.854077253218884,
+      "y": 0.863122171945701
+    },
+    "329c": {
+      "name": "newVariable",
+      "canvasName": "newVariable",
+      "summary": "Create a Job Variable",
+      "description": "Create a new Job variable by Job ID and assign it a value.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "name": "name_second_nested",
+          "value": []
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "summary",
+          "highlightString": "Create a <span class='highlight-string'>Job</span> Variable"
+        },
+        {
+          "key": "description",
+          "highlightString": "Create a new <span class='highlight-string'>Job</span> variable by Job ID and assign it a value."
+        }
+      ],
+      "groups": [],
+      "x": 1.23891273247496,
+      "y": 1.61085972850679
+    },
+    "63ff": {
+      "name": "push",
+      "canvasName": "push",
+      "summary": "Push Item to Array",
+      "description": "Push item to a job variable array",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "operation",
+      "variables": {
+        "incoming": {
+          "job_variable": "name_second_nested",
+          "item_to_push": "$var.a433.return_data"
+        },
+        "outgoing": {
+          "job_variable_value": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "description",
+          "highlightString": "Push item to a <span class='highlight-string'>job</span> variable array"
+        }
+      ],
+      "groups": [],
+      "x": 1.35693848354793,
+      "y": 1.61085972850679
+    },
+    "babe": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge action data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "action",
+              "value": {
+                "task": "job",
+                "variable": "action",
+                "editable": true
+              }
+            },
+            {
+              "key": "file_path",
+              "value": {
+                "task": "ec3b",
+                "variable": "return_data"
+              }
+            },
+            {
+              "key": "content",
+              "value": {
+                "task": "7bf5",
+                "variable": "return_data"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "canvasName",
+          "highlightString": "<span class='highlight-string'>merge</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Merge</span> Data"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Merge</span> data into a single object"
+        }
+      ],
+      "groups": [],
+      "x": 0.494489346069067,
+      "y": 0.724099099099099
+    },
+    "f54c": {
+      "name": "modify",
+      "canvasName": "modify",
+      "summary": "Modify Data",
+      "description": "Empty the old artifact array to save space.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "object_to_update": "$var.job.artifact",
+          "query": "",
+          "new_value": []
+        },
+        "outgoing": {
+          "updated_object": "$var.job.artifact"
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "matched": [
+        {
+          "key": "canvasName",
+          "highlightString": "<span class='highlight-string'>modify</span>"
+        },
+        {
+          "key": "summary",
+          "highlightString": "<span class='highlight-string'>Modify</span> Data"
+        },
+        {
+          "key": "description",
+          "highlightString": "<span class='highlight-string'>Modify</span> data"
+        }
+      ],
+      "groups": [],
+      "x": 0.4502325581395349,
+      "y": 0.49019607843137253,
+      "scheduled": false
+    }
+  },
+  "transitions": {
+    "1601": {},
+    "2450": {
+      "9ed7": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "3697": {
+      "f815": {
+        "type": "standard",
+        "state": "success"
+      },
+      "f131": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "4001": {
+      "798a": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "babe": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "6433": {
+      "4001": {
+        "type": "standard",
+        "state": "success"
+      },
+      "ec3b": {
+        "type": "standard",
+        "state": "success"
+      },
+      "7bf5": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "7554": {
+      "329c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_start": {
+      "fcfb": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "e24a": {
+      "6433": {
+        "type": "standard",
+        "state": "loop"
+      },
+      "f54c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "fcfb": {
+      "e24a": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "30ff": {},
+    "ec3b": {
+      "4001": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "7bf5": {
+      "4001": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "d8c5": {},
+    "42ee": {},
+    "798a": {
+      "db0b": {
+        "type": "standard",
+        "state": "loop"
+      }
+    },
+    "db0b": {
+      "2450": {
+        "type": "standard",
+        "state": "success"
+      },
+      "b93a": {
+        "type": "standard",
+        "state": "success"
+      },
+      "80bf": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "9e73": {},
+    "b93a": {
+      "80bf": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "80bf": {
+      "f401": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f401": {
+      "3697": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f131": {
+      "a433": {
+        "type": "standard",
+        "state": "loop"
+      }
+    },
+    "a433": {
+      "d522": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "d522": {
+      "7554": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "57b9": {
+      "6cdf": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "6cdf": {
+      "1601": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "6a5b": {},
+    "f815": {
+      "33e4": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "33e4": {},
+    "974a": {},
+    "30a4": {},
+    "9ed7": {
+      "89c4": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "89c4": {
+      "f401": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "329c": {
+      "63ff": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "63ff": {
+      "57b9": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "babe": {
+      "d8c5": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f54c": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "type": "automation",
+  "tags": [],
+  "groups": []
+}

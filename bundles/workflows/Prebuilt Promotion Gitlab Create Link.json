@@ -1,0 +1,2935 @@
+{
+  "canvasVersion": 1,
+  "created": "2022-03-08T14:50:49.785Z",
+  "createdVersion": "5.40.5-2021.1.52.0",
+  "created_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "description": null,
+  "font_size": 12,
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "repoName": {
+        "$id": "artifactFullName",
+        "type": "string",
+        "examples": [
+          "New Artifact"
+        ]
+      },
+      "_id": {
+        "title": "job_id",
+        "type": "string",
+        "examples": [
+          "test"
+        ]
+      },
+      "targetBranch": {
+        "title": "branch",
+        "type": "string"
+      },
+      "adapter_id": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "commitMessage": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "mrBranchName": {
+        "$id": "branch",
+        "type": "string"
+      },
+      "username": {
+        "title": "stringN",
+        "type": [
+          "array",
+          "string",
+          "boolean",
+          "number"
+        ],
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            " World"
+          ]
+        ]
+      },
+      "url": {
+        "title": "id",
+        "type": "string"
+      },
+      "packageJsonName": {
+        "$id": "packageJsonName",
+        "type": "string",
+        "examples": [
+          "sdfsa"
+        ]
+      },
+      "artifact": {
+        "$id": "artifact",
+        "type": "object",
+        "properties": {
+          "update": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "examples": [
+                    "README.md"
+                  ]
+                },
+                "type": {
+                  "type": "string",
+                  "examples": [
+                    "file"
+                  ]
+                },
+                "content": {
+                  "type": "string",
+                  "examples": [
+                    "<!-- This is a comment in md (Markdown) format, it will not be visible to the end user -->\n<!-- Update the below line with your artifact name -->\n# ASA Firewall Object Group Update \n<!-- Add a short description or tag-line -->\nThis artifact contains the Cisco ASA group policy object update workflow for Ansible using IAP.  This workflow is designed to create and/or update an existing group object to add and remove hosts on a Cisco ASA firewall physical and virtual devices via Ansible.\n​​\n<!-- Leave TOC intact unless you've added or removed headers -->\n## Table of Contents\n​\n- [Overview](#overview)\n- [Features](#features)\n- [Requirements](#requirements)\n- [Future Enhancements](#future-enhancements)\n- [How to Install](#how-to-install)\n- [How to Run](#how-to-run)\n- [Additional Information](#additional-information)\n​\n## Overview\n<!-- Write a few sentences about the artifact and explain the use case(s) -->\n<!-- Ex.: The Migration Wizard enables IAP users to conveniently move their automation use cases between their different IAP environments -->\n<!--  (e.g. from Dev to Pre-Production or from Lab to Production).  -->\nThis artifact contains the Cisco ASA group policy object update workflow for Ansible using IAP.  This workflow is designed to create and/or update an existing group object to add and remove hosts on a Cisco ASA firewall physical and virtual devices via Ansible.\n​\nThis solution consists of the following:\n* Main Workflow (**IAP-Artifacts ASA Firewall Group Policy Update**)\n* Automation Catalog entry (**IAP Artifacts ASA Firewall Object Group Update**)\n* JSON Form (**IAP Artifacts ASA Firewall Object Group Update**)\n​\n<!-- Workflow(s) Image Placeholder - TO BE ADDED DIRECTLY TO GITLAB -->\n<table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/ASA-Firewall-Object-Group-Update/raw/master/images/overview.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n\n​\n## Features\n<!-- Bullet point highlighting the most exciting features of the artifact -->\n<!-- Ex.: * Automatically checks for device type -->\n<!-- Ex.: * Displays dry-run to user (asking for confirmation) prior to pushing config to the device -->\n<!-- Ex.: * Verifies downloaded file integrity (using md5), will try to download again if failed -->\n  * Group Update Host Addition and Removal.\n  * Allow for a rollback in case functionality checks have failed.\n  * Zero touch mode of operation is available to select via JSON form.\n​\n## Requirements\n<!-- Explain any pre-req. Ex.: This artifact requires Ansible or NSO (with F5 NED) in order to run -->\nThis artifact requires Ansible, Itential Automation Gateway, and a Cisco ASA device.\n​\n## Supported Device Types\n  * Cisco ASA/ASAv\n​\n## Test Environment\n  * Devices Ver.:\n    * asa: 9.12\n  * IAP Ver. 2019.3.2\n  * Itential Automation Gateway Ver.: 2.36.3+2019.3.14\n  * Ansible Ver.: 2.8.3\n​\n## Future Enhancements\n<!-- OPTIONAL Mention If the artifact has known limited support. Ex.: This artifact only support Cisco IOS and XR devices -->\n* This workflow is designed to run only against Ansible devices; don't try to run it against Cisco-ASA devices orchastrated by Cisco NSO.\n* Form validation on list of hosts only supports IPv4 addresses\n​\n## How to Install\n<!-- OPTIONAL - Explain if external (to IAP) components are required. Ex. The ansible roles required for this artifact can be found in www.gitlab.com/itentialopensource......   -->\n * To install this artifact in IAP, use **App-Artifact** available in Nexus repo. \n <table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/ASA-Firewall-Object-Group-Update/raw/master/images/install.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n​\n\n## How to Run\n<!-- Explain what is/are the main entrypoint(s) for this artifact: automation catalog document, workflow builder, postman, etc.  -->\nStarting the ASA Firewall Group Policy Update is done via the Automation Catalog. Please provide the device, group and hosts in the provided form.\n <table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/ASA-Firewall-Object-Group-Update/raw/master/images/runAutomation.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n\n## Additional Information\nPlease use your Itential Customer Success account if you need support when using this artifact.\n"
+                  ]
+                }
+              },
+              "required": []
+            },
+            "$id": "update"
+          },
+          "create": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "examples": [
+                    "bundles"
+                  ]
+                },
+                "type": {
+                  "type": "string",
+                  "examples": [
+                    "directory"
+                  ]
+                },
+                "content": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "examples": [
+                          "ac_agenda_jobs"
+                        ]
+                      },
+                      "type": {
+                        "type": "string",
+                        "examples": [
+                          "directory"
+                        ]
+                      },
+                      "content": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "examples": [
+                                "IAP Artifacts ASA Firewall Object Group Update.json"
+                              ]
+                            },
+                            "type": {
+                              "type": "string",
+                              "examples": [
+                                "file"
+                              ]
+                            },
+                            "content": {
+                              "type": "string",
+                              "examples": [
+                                "{\n  \"_id\": \"5f3c38e78236fd5385c31bbd\",\n  \"name\": \"IAP Artifacts ASA Firewall Object Group Update\",\n  \"data\": {\n    \"lastUpdated\": \"2020-03-23T19:45:50.899Z\",\n    \"formData\": {\n      \"zeroTouch\": true,\n      \"asaFirewallDevice\": \"asa-aws-ansible\",\n      \"hostList\": [],\n      \"checkbox1\": true\n    },\n    \"formId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"workflowId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"description\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"gbac\": {\n      \"write\": [],\n      \"read\": []\n    },\n    \"modifiedById\": \"5f3bda043e82cb0740b460d6\",\n    \"modifiedByUsername\": \"justin.cotton\"\n  },\n  \"lastModifiedBy\": \"DSUP-IAP20201:11193\",\n  \"lastRunAt\": null,\n  \"nextRunAt\": null,\n  \"priority\": 0,\n  \"repeatInterval\": null,\n  \"repeatTimezone\": null,\n  \"type\": \"normal\"\n}"
+                              ]
+                            }
+                          },
+                          "required": []
+                        }
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              },
+              "required": []
+            },
+            "$id": "create"
+          }
+        },
+        "required": []
+      }
+    },
+    "required": [
+      "repoName",
+      "_id",
+      "targetBranch",
+      "adapter_id",
+      "commitMessage",
+      "mrBranchName",
+      "username",
+      "url",
+      "packageJsonName",
+      "artifact"
+    ]
+  },
+  "lastUpdatedVersion": "5.40.5-2021.1.89.0",
+  "last_updated": "2022-11-18T18:18:22.093Z",
+  "last_updated_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "name": "Prebuilt Promotion Gitlab Create Link",
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "repoName": {
+        "$id": "artifactFullName",
+        "type": "string",
+        "examples": [
+          "New Artifact"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "targetBranch": {
+        "title": "branch",
+        "type": "string"
+      },
+      "adapter_id": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "commitMessage": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "mrBranchName": {
+        "$id": "branch",
+        "type": "string"
+      },
+      "username": {
+        "title": "stringN",
+        "type": [
+          "array",
+          "string",
+          "boolean",
+          "number"
+        ],
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          [
+            " World"
+          ]
+        ]
+      },
+      "url": {
+        "title": "id",
+        "type": "string"
+      },
+      "packageJsonName": {
+        "$id": "packageJsonName",
+        "type": "string",
+        "examples": [
+          "sdfsa"
+        ]
+      },
+      "artifact": {
+        "$id": "artifact",
+        "type": "object",
+        "properties": {
+          "update": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "examples": [
+                    "README.md"
+                  ]
+                },
+                "type": {
+                  "type": "string",
+                  "examples": [
+                    "file"
+                  ]
+                },
+                "content": {
+                  "type": "string",
+                  "examples": [
+                    "<!-- This is a comment in md (Markdown) format, it will not be visible to the end user -->\n<!-- Update the below line with your artifact name -->\n# ASA Firewall Object Group Update \n<!-- Add a short description or tag-line -->\nThis artifact contains the Cisco ASA group policy object update workflow for Ansible using IAP.  This workflow is designed to create and/or update an existing group object to add and remove hosts on a Cisco ASA firewall physical and virtual devices via Ansible.\n​​\n<!-- Leave TOC intact unless you've added or removed headers -->\n## Table of Contents\n​\n- [Overview](#overview)\n- [Features](#features)\n- [Requirements](#requirements)\n- [Future Enhancements](#future-enhancements)\n- [How to Install](#how-to-install)\n- [How to Run](#how-to-run)\n- [Additional Information](#additional-information)\n​\n## Overview\n<!-- Write a few sentences about the artifact and explain the use case(s) -->\n<!-- Ex.: The Migration Wizard enables IAP users to conveniently move their automation use cases between their different IAP environments -->\n<!--  (e.g. from Dev to Pre-Production or from Lab to Production).  -->\nThis artifact contains the Cisco ASA group policy object update workflow for Ansible using IAP.  This workflow is designed to create and/or update an existing group object to add and remove hosts on a Cisco ASA firewall physical and virtual devices via Ansible.\n​\nThis solution consists of the following:\n* Main Workflow (**IAP-Artifacts ASA Firewall Group Policy Update**)\n* Automation Catalog entry (**IAP Artifacts ASA Firewall Object Group Update**)\n* JSON Form (**IAP Artifacts ASA Firewall Object Group Update**)\n​\n<!-- Workflow(s) Image Placeholder - TO BE ADDED DIRECTLY TO GITLAB -->\n<table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/ASA-Firewall-Object-Group-Update/raw/master/images/overview.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n\n​\n## Features\n<!-- Bullet point highlighting the most exciting features of the artifact -->\n<!-- Ex.: * Automatically checks for device type -->\n<!-- Ex.: * Displays dry-run to user (asking for confirmation) prior to pushing config to the device -->\n<!-- Ex.: * Verifies downloaded file integrity (using md5), will try to download again if failed -->\n  * Group Update Host Addition and Removal.\n  * Allow for a rollback in case functionality checks have failed.\n  * Zero touch mode of operation is available to select via JSON form.\n​\n## Requirements\n<!-- Explain any pre-req. Ex.: This artifact requires Ansible or NSO (with F5 NED) in order to run -->\nThis artifact requires Ansible, Itential Automation Gateway, and a Cisco ASA device.\n​\n## Supported Device Types\n  * Cisco ASA/ASAv\n​\n## Test Environment\n  * Devices Ver.:\n    * asa: 9.12\n  * IAP Ver. 2019.3.2\n  * Itential Automation Gateway Ver.: 2.36.3+2019.3.14\n  * Ansible Ver.: 2.8.3\n​\n## Future Enhancements\n<!-- OPTIONAL Mention If the artifact has known limited support. Ex.: This artifact only support Cisco IOS and XR devices -->\n* This workflow is designed to run only against Ansible devices; don't try to run it against Cisco-ASA devices orchastrated by Cisco NSO.\n* Form validation on list of hosts only supports IPv4 addresses\n​\n## How to Install\n<!-- OPTIONAL - Explain if external (to IAP) components are required. Ex. The ansible roles required for this artifact can be found in www.gitlab.com/itentialopensource......   -->\n * To install this artifact in IAP, use **App-Artifact** available in Nexus repo. \n <table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/ASA-Firewall-Object-Group-Update/raw/master/images/install.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n​\n\n## How to Run\n<!-- Explain what is/are the main entrypoint(s) for this artifact: automation catalog document, workflow builder, postman, etc.  -->\nStarting the ASA Firewall Group Policy Update is done via the Automation Catalog. Please provide the device, group and hosts in the provided form.\n <table><tr><td>\n  <img src=\"https://gitlab.com/itentialopensource/pre-built-automations/ASA-Firewall-Object-Group-Update/raw/master/images/runAutomation.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n\n## Additional Information\nPlease use your Itential Customer Success account if you need support when using this artifact.\n"
+                  ]
+                }
+              },
+              "required": []
+            },
+            "$id": "update"
+          },
+          "create": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "examples": [
+                    "bundles"
+                  ]
+                },
+                "type": {
+                  "type": "string",
+                  "examples": [
+                    "directory"
+                  ]
+                },
+                "content": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "examples": [
+                          "ac_agenda_jobs"
+                        ]
+                      },
+                      "type": {
+                        "type": "string",
+                        "examples": [
+                          "directory"
+                        ]
+                      },
+                      "content": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "examples": [
+                                "IAP Artifacts ASA Firewall Object Group Update.json"
+                              ]
+                            },
+                            "type": {
+                              "type": "string",
+                              "examples": [
+                                "file"
+                              ]
+                            },
+                            "content": {
+                              "type": "string",
+                              "examples": [
+                                "{\n  \"_id\": \"5f3c38e78236fd5385c31bbd\",\n  \"name\": \"IAP Artifacts ASA Firewall Object Group Update\",\n  \"data\": {\n    \"lastUpdated\": \"2020-03-23T19:45:50.899Z\",\n    \"formData\": {\n      \"zeroTouch\": true,\n      \"asaFirewallDevice\": \"asa-aws-ansible\",\n      \"hostList\": [],\n      \"checkbox1\": true\n    },\n    \"formId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"workflowId\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"description\": \"IAP Artifacts ASA Firewall Object Group Update\",\n    \"gbac\": {\n      \"write\": [],\n      \"read\": []\n    },\n    \"modifiedById\": \"5f3bda043e82cb0740b460d6\",\n    \"modifiedByUsername\": \"justin.cotton\"\n  },\n  \"lastModifiedBy\": \"DSUP-IAP20201:11193\",\n  \"lastRunAt\": null,\n  \"nextRunAt\": null,\n  \"priority\": 0,\n  \"repeatInterval\": null,\n  \"repeatTimezone\": null,\n  \"type\": \"normal\"\n}"
+                              ]
+                            }
+                          },
+                          "required": []
+                        }
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              },
+              "required": []
+            },
+            "$id": "create"
+          }
+        },
+        "required": []
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "postRepoURI": {
+        "type": "string"
+      },
+      "error": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    }
+  },
+  "preAutomationTime": 0,
+  "sla": 0,
+  "tasks": {
+    "592": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query update commit data",
+      "description": "Query update commit data",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "commitActions",
+          "obj": "$var.46fe.output"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.9493941553813257,
+      "y": 1.2288306451612903,
+      "scheduled": false
+    },
+    "619": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query projects in group",
+      "description": "Query projects in group",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.projects",
+          "obj": "$var.8f4d.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.38666666666666666,
+      "y": 0.5012019230769231,
+      "scheduled": false
+    },
+    "1751": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075cef28c016f0098c7284c",
+          "variableMap": {
+            "artifactFullName": "$var.job.repoName"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "artifactName": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.5686274509803921,
+      "y": 0.4988962472406181,
+      "task_name": "getArtifactPathGitlab"
+    },
+    "2890": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Data Using 'json-query' Format",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response",
+          "obj": "$var.c6d7.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.6642908054169636,
+      "y": 1.3860887096774193,
+      "scheduled": false
+    },
+    "2995": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Data Using 'json-query' Format",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "time",
+          "obj": "$var.b99e.time"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 2.2705882352941176,
+      "y": 0.4661016949152542,
+      "scheduled": false
+    },
+    "5168": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query repo id",
+      "description": "Query repo id",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.id",
+          "obj": "$var.6c1.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.20078431372549,
+      "y": 0.5629139072847682,
+      "scheduled": false
+    },
+    "6114": {
+      "name": "reattempt",
+      "canvasName": "reattempt",
+      "summary": "Re-attempt",
+      "description": "Re-attempt after n minutes",
+      "location": "Application",
+      "locationType": null,
+      "app": "MOP",
+      "type": "automatic",
+      "displayName": "MOP",
+      "variables": {
+        "incoming": {
+          "job_id": "$var.job._id",
+          "attemptID": "$var.2995.return_data",
+          "minutes": 0,
+          "attempts": 3
+        },
+        "outgoing": {
+          "response": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 2.473271560940841,
+      "y": 0.2399193548387097,
+      "scheduled": false
+    },
+    "6825": {
+      "name": "setObjectKey",
+      "canvasName": "setObjectKey",
+      "summary": "CI-YML file content",
+      "description": "Set an object key",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Object",
+      "variables": {
+        "incoming": {
+          "obj": {
+            "name": ".gitlab-ci.yml"
+          },
+          "path": [
+            "content"
+          ],
+          "value": "services:\n  - docker:dind\n\nafter_script:\n  - rm -rf ~/.ssh\n\nstages:\n  # Lint code, test code quality, and ensure there are no insecure dependencies\n  - quality\n  # Run unit and integration test suites\n  - test\n  # version bump\n  - bump\n  # Generate artifact.json file (needed for admin-essentials starting IAP 2020.1)\n  - generate\n  # Promote artifact.json to IAP\n  - promote\n\nsecurity:\n  image: timbru31/node-alpine-git:16\n  allow_failure: true\n  stage: quality\n  script:\n    - npm i\n    # check node version:\n    - 'echo \"node version: $(node --version)\"'\n    # check npm version\n    - 'echo \"npm version: $(npm --version)\"'\n    - npm audit --registry=https://registry.npmjs.org\n\nschema_validation:\n  image: timbru31/node-alpine-git:16\n  allow_failure: false\n  stage: test\n  script:\n    - npm i\n    # check node version:\n    - 'echo \"node version: $(node --version)\"'\n    # check npm version\n    - 'echo \"npm version: $(npm --version)\"'\n    - npm run validateSchema\n\nschemaLinks_validation:\n  image: timbru31/node-alpine-git:16\n  allow_failure: false\n  stage: test\n  script:\n    - npm i\n    # check node version:\n    - 'echo \"node version: $(node --version)\"'\n    # check npm version\n    - 'echo \"npm version: $(npm --version)\"'\n    - npm run validateSchemaLinks\n\nversion_bump:\n  image: timbru31/node-alpine-git:16  \n  stage: bump\n  only:\n    - master\n  script:\n    - sh ./scripts/git_setup.sh\n    - sh ./scripts/node_setup.sh\n    - sh ./scripts/ver_bump.sh\n\ngenerate_artifact_json:\n  image: timbru31/node-alpine-git:16\n  allow_failure: false\n  stage: generate\n  artifacts:\n    paths:\n    - artifact.json\n    expire_in: 5 mins \n  script:\n    - sh ./scripts/commit.sh\n\npromote_to_iap:\n  image: python\n  allow_failure: false\n  only:\n    - master\n  except:\n    variables: \n      - $PROMOTE == \"False\"\n  dependencies: \n    - generate_artifact_json\n  stage: promote\n  script:\n    - |\n      pip3 install requests\n      if ! python3 ./scripts/promote.py ./artifact.json; then\n        echo -e \"\\033[0;31mERROR: ***********************************************************************************\"\n        echo \"ERROR: There was an issue promoting artifact.json to IAP.\"\n        echo -e \"ERROR: ***********************************************************************************\\033[0m\"\n        exit 1\n      fi \n      \n# Only use spaces to indent your .yml configuration.\n# -----"
+        },
+        "outgoing": {
+          "object": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": -0.24627450980392157,
+      "y": 0.5032258064516129,
+      "scheduled": false
+    },
+    "6891": {
+      "name": "getV4ProjectsIdRepositoryBranchesBranch",
+      "canvasName": "getV4ProjectsIdRepositoryBranchesBranch",
+      "summary": "Get a single branch",
+      "description": "Get a single branch",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "id": "$var.3c4a.repoId",
+          "branch": "$var.job.targetBranch",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.2651461154668568,
+      "y": 0.8256048387096774,
+      "scheduled": false
+    },
+    "7100": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "View Data",
+      "description": "View data in a pretty format",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Failed",
+          "message": "Failed to create merge request",
+          "body": "Try again?",
+          "variables": {},
+          "btn_success": "Try Again",
+          "btn_failure": "Cancel job"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": 2.933606557377049,
+      "y": 0.8940677966101694,
+      "scheduled": false
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": -0.8376470588235294,
+      "y": 0.48129032258064514
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 3.0342124019957235,
+      "y": 0.4657258064516129
+    },
+    "8f53": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Get Subgroup ID",
+      "description": "Get Subgroup ID",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.id",
+          "obj": "$var.8f4d.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.46431372549019606,
+      "y": 0.5033112582781457,
+      "scheduled": false
+    },
+    "fa4d": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge Data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "name",
+              "value": {
+                "task": "job",
+                "variable": "repoName",
+                "editable": true
+              }
+            },
+            {
+              "key": "path",
+              "value": {
+                "task": "1751",
+                "variable": "artifactName",
+                "editable": true
+              }
+            },
+            {
+              "key": "namespace_id",
+              "value": {
+                "task": "8f53",
+                "variable": "return_data"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.6784313725490196,
+      "y": 0.5066225165562914
+    },
+    "29b": {
+      "name": "newVariable",
+      "canvasName": "newVariable",
+      "summary": "Create a Job Variable",
+      "description": "Create a new Job variable by Job ID and assign it a value.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "name": "postRepoURI",
+          "value": "https://gitlab.com/api/v4/projects"
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.7662745098039215,
+      "y": 0.5055187637969095
+    },
+    "190d": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query homepage",
+      "description": "Query homepage",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.web_url",
+          "obj": "$var.6c1.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.2059871703492515,
+      "y": 0.46673387096774194,
+      "scheduled": false
+    },
+    "cfa6": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query ssh url",
+      "description": "Query ssh url",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.ssh_url_to_repo",
+          "obj": "$var.6c1.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.203921568627451,
+      "y": 0.3852097130242826,
+      "scheduled": false
+    },
+    "5a9c": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge Data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "git",
+              "value": {
+                "task": "cfa6",
+                "variable": "return_data"
+              }
+            },
+            {
+              "key": "homepage",
+              "value": {
+                "task": "190d",
+                "variable": "return_data"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.29035166816952,
+      "y": 0.487712665406427
+    },
+    "5a7e": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query create",
+      "description": "Query create",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "create",
+          "obj": "$var.99e6.createArray"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.39765554553652,
+      "y": 0.484877126654064,
+      "scheduled": false
+    },
+    "871d": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query create commit data",
+      "description": "Query create commit data",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "commitActions",
+          "obj": "$var.1a1d.output"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.8595866001425516,
+      "y": 0.4739583333333333,
+      "scheduled": false
+    },
+    "14f0": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge Data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "branch",
+              "value": {
+                "task": "job",
+                "variable": "targetBranch",
+                "editable": true
+              }
+            },
+            {
+              "key": "commit_message",
+              "value": {
+                "task": "job",
+                "variable": "commitMessage",
+                "editable": true
+              }
+            },
+            {
+              "key": "actions",
+              "value": {
+                "task": "871d",
+                "variable": "return_data"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.9679258731290092,
+      "y": 0.47708333333333336
+    },
+    "3b3e": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "View Data",
+      "description": "View data in a pretty format",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Error",
+          "message": "Error making commit to repository on GitLab. ",
+          "body": "Try again?",
+          "variables": {},
+          "btn_success": "Try Again",
+          "btn_failure": "Cancel Job"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": 2.70064148253742,
+      "y": 0.2540322580645161,
+      "scheduled": false
+    },
+    "542c": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075cfe68c016f0098c7284d",
+          "variableMap": {
+            "repoId": "$var.5168.return_data"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "gitlabCommitURI": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 2.0648610121168924,
+      "y": 0.46673387096774194,
+      "task_name": "getUriGitlab"
+    },
+    "38fc": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "Failed to create project",
+      "description": "View data in a pretty format",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Failed",
+          "message": "Failed to create project repository. Try again?",
+          "body": "",
+          "variables": {},
+          "btn_success": "Try again",
+          "btn_failure": "Cancel job"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": 1.0833927298645758,
+      "y": 0.22782258064516128,
+      "scheduled": false
+    },
+    "c46b": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge Data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "branch",
+              "value": {
+                "task": "job",
+                "variable": "mrBranchName",
+                "editable": true
+              }
+            },
+            {
+              "key": "ref",
+              "value": {
+                "task": "job",
+                "variable": "targetBranch",
+                "editable": true
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.0876692801140413,
+      "y": 0.8145161290322581
+    },
+    "af69": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query update",
+      "description": "Query update",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "update",
+          "obj": "$var.99e6.updateArray"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.4853884533143265,
+      "y": 1.0554435483870968,
+      "scheduled": false
+    },
+    "25d8": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge Data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "branch",
+              "value": {
+                "task": "job",
+                "variable": "mrBranchName",
+                "editable": true
+              }
+            },
+            {
+              "key": "commit_message",
+              "value": {
+                "task": "job",
+                "variable": "commitMessage",
+                "editable": true
+              }
+            },
+            {
+              "key": "actions",
+              "value": {
+                "task": "592",
+                "variable": "return_data"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.805416963649323,
+      "y": 1.2258064516129032
+    },
+    "b529": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "View Data",
+      "description": "View data in a pretty format",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Failed",
+          "message": "Failed to update MR branch",
+          "body": "Try again?",
+          "variables": {},
+          "btn_success": "Try Again",
+          "btn_failure": "Cancel Job"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": 2.5730577334283677,
+      "y": 1.0131048387096775,
+      "scheduled": false
+    },
+    "dd20": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge Data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "source_branch",
+              "value": {
+                "task": "job",
+                "variable": "mrBranchName",
+                "editable": true
+              }
+            },
+            {
+              "key": "target_branch",
+              "value": {
+                "task": "job",
+                "variable": "targetBranch",
+                "editable": true
+              }
+            },
+            {
+              "key": "title",
+              "value": {
+                "task": "job",
+                "variable": "mrBranchName",
+                "editable": true
+              }
+            },
+            {
+              "key": "description",
+              "value": {
+                "task": "ddb4",
+                "variable": "combinedStrings",
+                "editable": true
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 2.8975409836065573,
+      "y": 1.2605932203389831
+    },
+    "92e3": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075cfe68c016f0098c7284d",
+          "variableMap": {
+            "repoId": "$var.3c4a.repoId"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "gitlabCommitURI": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.6500356379187455,
+      "y": 1.2116935483870968,
+      "task_name": "getUriGitlab"
+    },
+    "3c4a": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075bd068c016f0098c72848",
+          "variableMap": {
+            "repoSearchName": "$var.job.repoName",
+            "repoSearchResults": "$var.619.return_data"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "repoURL": null,
+          "repoId": null,
+          "httpURL": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.090520313613685,
+      "y": 0.6139112903225806,
+      "task_name": "getRepoURLGitlab",
+      "retrySettings": null
+    },
+    "f382": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075d09d8c016f0098c7284e",
+          "variableMap": {
+            "repoId": "$var.3c4a.repoId",
+            "targetBranch": "$var.job.targetBranch"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "getPackageJsonURL": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.6143977191732002,
+      "y": 1.0463709677419355,
+      "task_name": "getPackageJsonGitlab"
+    },
+    "40bf": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query version",
+      "description": "Query version",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.version",
+          "obj": "$var.c16e.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.9315751960085532,
+      "y": 1.0443548387096775,
+      "scheduled": false
+    },
+    "ddb4": {
+      "name": "stringConcat",
+      "canvasName": "concat",
+      "summary": "Merge request description",
+      "description": "Merge request description",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "String",
+      "variables": {
+        "incoming": {
+          "str": "Merge request created by:",
+          "stringN": "$var.job.username"
+        },
+        "outgoing": {
+          "combinedStrings": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 2.754918032786885,
+      "y": 1.263771186440678,
+      "scheduled": false
+    },
+    "d1bf": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075bcc58c016f0098c72846",
+          "variableMap": {
+            "branch": "$var.ae5b.branch",
+            "commit_message": "$var.ae5b.commit_message",
+            "filterActions": "$var.ae5b.actions"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "filteredCommit": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 2.36208125445474,
+      "y": 1.2711693548387097,
+      "task_name": "filterActionsGitlab"
+    },
+    "ae5b": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075d1cf8c016f0098c72852",
+          "variableMap": {
+            "commitUpdate": "$var.25d8.merged_object"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "branch": null,
+          "commit_message": null,
+          "actions": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 2.3549536707056307,
+      "y": 1.3931451612903225,
+      "task_name": "actionCreateGitlab"
+    },
+    "2dcc": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075d13d8c016f0098c7284f",
+          "variableMap": {
+            "repoID": "$var.3c4a.repoId"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "uriForGet": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.495367070563079,
+      "y": 1.2066532258064515,
+      "task_name": "getUriForFilesGitlab"
+    },
+    "6c1": {
+      "name": "postV4Projects",
+      "canvasName": "postV4Projects",
+      "summary": "Create new project",
+      "description": "Create new project",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "body": "$var.fa4d.merged_object",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "$var.job.error",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.0890947968638631,
+      "y": 0.4475806451612903,
+      "scheduled": false
+    },
+    "8f4d": {
+      "name": "getV4GroupsId",
+      "canvasName": "getV4GroupsId",
+      "summary": "Get a single group, with containing projects.",
+      "description": "Get a single group, with containing projects.",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "id": "$var.job.url",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": -0.4180392156862745,
+      "y": 0.5019354838709678,
+      "scheduled": false
+    },
+    "2b32": {
+      "name": "postV4ProjectsIdRepositoryBranches",
+      "canvasName": "postV4ProjectsIdRepositoryBranches",
+      "summary": "Create branch",
+      "description": "Create branch",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "id": "$var.3c4a.repoId",
+          "body": "$var.c46b.merged_object",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.2658588738417675,
+      "y": 1.03125,
+      "scheduled": false
+    },
+    "c16e": {
+      "name": "getV4ProjectsRepositoryFilesRaw",
+      "canvasName": "getV4ProjectsRepositoryFilesRaw",
+      "summary": "Get raw file from repository",
+      "description": "Get raw file from repository",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "ref": "master",
+          "id": "$var.3c4a.repoId",
+          "filePath": "package.json",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.8104062722736993,
+      "y": 1.0524193548387097,
+      "scheduled": false
+    },
+    "57f8": {
+      "name": "postV4ProjectsIdRepositoryCommits",
+      "canvasName": "postV4ProjectsIdRepositoryCommits",
+      "summary": "Commit multiple file changes as one commit",
+      "description": "This feature was introduced in GitLab 8.13",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "id": "$var.3c4a.repoId",
+          "body": "$var.a161.commitDeleteBody",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 2.1454027084818246,
+      "y": 1.3840725806451613,
+      "scheduled": false
+    },
+    "3ed9": {
+      "name": "postV4ProjectsIdRepositoryCommits",
+      "canvasName": "postV4ProjectsIdRepositoryCommits",
+      "summary": "Commit multiple file changes as one commit",
+      "description": "This feature was introduced in GitLab 8.13",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "id": "$var.3c4a.repoId",
+          "body": "$var.d1bf.filteredCommit",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 2.5645046329294368,
+      "y": 1.2701612903225807,
+      "scheduled": false
+    },
+    "9c59": {
+      "name": "postV4ProjectsIdMergeRequests",
+      "canvasName": "postV4ProjectsIdMergeRequests",
+      "summary": "Create a merge request",
+      "description": "Create a merge request",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "id": "$var.3c4a.repoId",
+          "body": "$var.dd20.merged_object",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 3.0508196721311474,
+      "y": 1.2669491525423728,
+      "scheduled": false
+    },
+    "5c14": {
+      "name": "postV4ProjectsIdRepositoryCommits",
+      "canvasName": "postV4ProjectsIdRepositoryCommits",
+      "summary": "Commit multiple file changes as one commit",
+      "description": "This feature was introduced in GitLab 8.13",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "id": "$var.5168.return_data",
+          "body": "$var.14f0.merged_object",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 2.44903777619387,
+      "y": 0.46068548387096775,
+      "scheduled": false
+    },
+    "f3e4": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075d17e8c016f0098c72850",
+          "variableMap": {
+            "bodyFromGetCall": "$var.2890.return_data"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "filteredBody": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.8075552387740557,
+      "y": 1.3850806451612903,
+      "task_name": "filterBodyGitlab"
+    },
+    "a161": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "JSON Transformation",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075d19a8c016f0098c72851",
+          "variableMap": {
+            "commit_message": "Clean Repo [skip ci]",
+            "branch": "$var.job.mrBranchName",
+            "filteredBody": "$var.f3e4.filteredBody"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "commitDeleteBody": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.9522451888809693,
+      "y": 1.3911290322580645,
+      "task_name": "createDeleteCommitGitlab"
+    },
+    "c6d7": {
+      "name": "getV4ProjectsIdRepositoryTree",
+      "canvasName": "getV4ProjectsIdRepositoryTree",
+      "summary": "Get a project repository tree",
+      "description": "Get a project repository tree",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "id": "$var.3c4a.repoId",
+          "ref": "$var.job.mrBranchName",
+          "pathParam": "",
+          "recursive": true,
+          "perPage": 5000,
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.4982181040627227,
+      "y": 1.376008064516129,
+      "scheduled": false
+    },
+    "b99e": {
+      "name": "getTime",
+      "canvasName": "getTime",
+      "summary": "Get time",
+      "description": "Gets the current time with an optional offset, timezone shift, and format string",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Time",
+      "variables": {
+        "incoming": {
+          "timezone": "-05:00",
+          "offsetDuration": "",
+          "format": ""
+        },
+        "outgoing": {
+          "time": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 2.1715686274509802,
+      "y": 0.4639830508474576,
+      "scheduled": false
+    },
+    "a33f": {
+      "name": "delay",
+      "canvasName": "delay",
+      "summary": "Delay a Job",
+      "description": "Delay a Job for a duration by Job ID and number of seconds.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "time": 10
+        },
+        "outgoing": {
+          "time_in_milliseconds": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 2.317177476835353,
+      "y": 0.2933467741935484,
+      "scheduled": false
+    },
+    "b51": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "SubGroup Not Found",
+      "description": "Displays a message and runtime data to an operator. This can be used to request a decision, or used for acknowledgement only.",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "SubGroup Not Found",
+          "message": "Failed to find subgroup in Gitlab. Make sure inputted subgroup exists.",
+          "body": "Try again?",
+          "variables": {},
+          "btn_success": "Try Again",
+          "btn_failure": "Cancel Job"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": -0.42745098039215684,
+      "y": 0.2632258064516129,
+      "scheduled": false
+    },
+    "ea3c": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "updatePackageJSONGitlab",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075bc6c8c016f0098c7283f",
+          "variableMap": {
+            "filesArray": "$var.5a7e.return_data",
+            "packageJsonName": "$var.job.packageJsonName",
+            "packageJsonVersion": "0.0.1"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "fixedArray": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.5096222380612971,
+      "y": 0.484375,
+      "task_name": "updatePackageJSONGitlab",
+      "retrySettings": null
+    },
+    "7f02": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "updatePackageJSONGitlab",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6075bc6c8c016f0098c7283f",
+          "variableMap": {
+            "filesArray": "$var.af69.return_data",
+            "packageJsonName": "$var.job.packageJsonName",
+            "packageJsonVersion": "$var.40bf.return_data"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "fixedArray": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 2.090520313613685,
+      "y": 1.0524193548387097,
+      "task_name": "updatePackageJSONGitlab",
+      "retrySettings": null
+    },
+    "1a1d": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "generateCommitActions",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "621fd789da0c6c470881bdab",
+          "variableMap": {
+            "action": "create",
+            "fixedArray": "$var.ea3c.fixedArray"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "output": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.7020669992872417,
+      "y": 0.48020833333333335,
+      "task_name": "generateCommitActions",
+      "retrySettings": null
+    },
+    "46fe": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "generateCommitActions",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "621fd789da0c6c470881bdab",
+          "variableMap": {
+            "action": "update",
+            "fixedArray": "$var.7f02.fixedArray"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "output": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 2.0876692801140413,
+      "y": 1.217741935483871,
+      "task_name": "generateCommitActions",
+      "retrySettings": null
+    },
+    "f91f": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "projectExistsGitlab",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "622f933c53c0030101260b09",
+          "variableMap": {
+            "groupsId": "$var.8f4d.result",
+            "path": "$var.1751.artifactName"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "projectExists": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.8923734853884533,
+      "y": 0.5060483870967742,
+      "task_name": "projectExistsGitlab",
+      "retrySettings": null
+    },
+    "a7e2": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Project Exists Check",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "projectExists",
+                    "task": "f91f"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.9843193157519601,
+      "y": 0.5040322580645161
+    },
+    "da5e": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "Target Branch Not Found",
+      "description": "View data in a pretty format",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Target Branch Not Found",
+          "message": "Failed to get Target Branch. Check that the inputted Target Branch exists.",
+          "body": "",
+          "variables": {},
+          "btn_success": "Cancel Job",
+          "btn_failure": ""
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": 1.5146115466856735,
+      "y": 0.8205645161290323,
+      "scheduled": false
+    },
+    "1f81": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Run Evaluation Task",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "result",
+                    "task": "f22b"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": -0.5670588235294117,
+      "y": 0.4967741935483871
+    },
+    "3fa0": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "View Data",
+      "description": "Displays a message and runtime data to an operator. This can be used to request a decision, or used for acknowledgement only.",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Adapter Healthcheck Failed",
+          "message": "Failed to connect to Gitlab adapter. Make sure your adapter is online. ",
+          "body": "Try again?",
+          "variables": {},
+          "btn_success": "Try Again",
+          "btn_failure": "Cancel Job"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": -0.5709803921568627,
+      "y": 0.6438709677419355,
+      "scheduled": false
+    },
+    "defc": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Create Script and Test Files",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Prebuilt Promotion Gitlab Add Files",
+          "variables": {},
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "job",
+      "x": -0.09411764705882353,
+      "y": 0.5006451612903225
+    },
+    "716f": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "getScriptFiles",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "scriptFiles",
+          "obj": "$var.defc.job_details"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.03215686274509804,
+      "y": 0.5083870967741936,
+      "scheduled": false
+    },
+    "3fff": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "getTestFiles",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "testFiles",
+          "obj": "$var.defc.job_details"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.08470588235294117,
+      "y": 0.512258064516129,
+      "scheduled": false
+    },
+    "c290": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "getFileObjectsPP",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "621d05685da44100e455a1d1",
+          "variableMap": {
+            "scriptsArr": "$var.716f.return_data",
+            "ymlFile": "$var.6825.object",
+            "testFiles": "$var.3fff.return_data"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "scriptsFolder": null,
+          "YMLFile": null,
+          "testFolder": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.1631372549019608,
+      "y": 0.5096774193548387,
+      "task_name": "getFileObjectsPP",
+      "retrySettings": null
+    },
+    "99e6": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "createAndUpdateArraysPP",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "621d36785da44100e455a1d3",
+          "variableMap": {
+            "artifact": "$var.job.artifact",
+            "scriptsObject": "$var.c290.scriptsFolder",
+            "ymlFile": "$var.c290.YMLFile",
+            "testsObject": "$var.c290.testFolder"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "createArray": null,
+          "updateArray": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.2847058823529412,
+      "y": 0.5070967741935484,
+      "task_name": "createAndUpdateArraysPP",
+      "retrySettings": null
+    },
+    "f22b": {
+      "name": "iapRunAdapterHealthcheck",
+      "canvasName": "iapRunAdapterHealthcheck",
+      "summary": "Runs healthcheck script for adapter",
+      "description": "Runs healthcheck script for adapter",
+      "location": "Adapter",
+      "locationType": "Gitlab",
+      "app": "Gitlab",
+      "type": "automatic",
+      "displayName": "Gitlab",
+      "variables": {
+        "incoming": {
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": -0.7068160597572363,
+      "y": 0.5054282267792521,
+      "scheduled": false
+    }
+  },
+  "transitions": {
+    "592": {
+      "25d8": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "619": {
+      "8f53": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "985": {},
+    "1751": {
+      "fa4d": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "2890": {
+      "f3e4": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "2995": {
+      "5c14": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5168": {
+      "5a9c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "6114": {
+      "3b3e": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "a33f": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "6825": {
+      "defc": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "6891": {
+      "2b32": {
+        "type": "standard",
+        "state": "success"
+      },
+      "da5e": {
+        "type": "standard",
+        "state": "error"
+      }
+    },
+    "7100": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "9c59": {
+        "type": "revert",
+        "state": "success"
+      }
+    },
+    "workflow_start": {
+      "f22b": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "8f53": {
+      "1751": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "fa4d": {
+      "29b": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "29b": {
+      "f91f": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "190d": {
+      "5a9c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "cfa6": {
+      "5a9c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5a9c": {
+      "5a7e": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5a7e": {
+      "ea3c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "871d": {
+      "14f0": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "14f0": {
+      "542c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "3b3e": {
+      "542c": {
+        "type": "revert",
+        "state": "success"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "583c": {},
+    "ba52": {},
+    "542c": {
+      "b99e": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "38fc": {
+      "6c1": {
+        "type": "revert",
+        "state": "success"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "c60": {},
+    "c46b": {
+      "6891": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "af69": {
+      "f382": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "25d8": {
+      "92e3": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b529": {
+      "3ed9": {
+        "type": "revert",
+        "state": "success"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "dd20": {
+      "9c59": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "683e": {},
+    "2c42": {},
+    "33ba": {},
+    "92e3": {
+      "2dcc": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "1fc1": {},
+    "3c4a": {
+      "c46b": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f382": {
+      "c16e": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "40bf": {
+      "7f02": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "ddb4": {
+      "dd20": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "80b1": {},
+    "d1bf": {
+      "3ed9": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "ae5b": {
+      "d1bf": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "2dcc": {
+      "c6d7": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5a0d": {},
+    "a613": {},
+    "6c1": {
+      "5168": {
+        "type": "standard",
+        "state": "success"
+      },
+      "cfa6": {
+        "type": "standard",
+        "state": "success"
+      },
+      "190d": {
+        "type": "standard",
+        "state": "success"
+      },
+      "38fc": {
+        "type": "standard",
+        "state": "error"
+      }
+    },
+    "8f4d": {
+      "6825": {
+        "type": "standard",
+        "state": "success"
+      },
+      "b51": {
+        "type": "standard",
+        "state": "error"
+      }
+    },
+    "2b32": {
+      "af69": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "c16e": {
+      "40bf": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "57f8": {
+      "ae5b": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "3ed9": {
+      "b529": {
+        "type": "standard",
+        "state": "error"
+      },
+      "ddb4": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "9c59": {
+      "7100": {
+        "type": "standard",
+        "state": "error"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5c14": {
+      "6114": {
+        "type": "standard",
+        "state": "error"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f3e4": {
+      "a161": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "a161": {
+      "57f8": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "c6d7": {
+      "2890": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b99e": {
+      "2995": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "a33f": {
+      "2995": {
+        "type": "revert",
+        "state": "success"
+      }
+    },
+    "b51": {
+      "8f4d": {
+        "type": "revert",
+        "state": "success"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "ea3c": {
+      "1a1d": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "7f02": {
+      "46fe": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "1a1d": {
+      "871d": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "46fe": {
+      "592": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f91f": {
+      "a7e2": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "a7e2": {
+      "6c1": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "3c4a": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "36fe": {},
+    "da5e": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "1f81": {
+      "8f4d": {
+        "type": "standard",
+        "state": "success"
+      },
+      "3fa0": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "3fa0": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "f22b": {
+        "type": "revert",
+        "state": "success"
+      }
+    },
+    "defc": {
+      "716f": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "716f": {
+      "3fff": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "3fff": {
+      "c290": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "c290": {
+      "99e6": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "99e6": {
+      "619": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f22b": {
+      "1f81": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "type": "automation",
+  "tags": [],
+  "groups": []
+}

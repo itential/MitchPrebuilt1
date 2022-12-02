@@ -1,0 +1,384 @@
+{
+  "_id": "622f933c53c0030101260b09",
+  "name": "projectExistsGitlab",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "groupsId",
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "examples": [
+                5
+              ]
+            },
+            "full_name": {
+              "type": "string",
+              "examples": [
+                "itential / dsup"
+              ]
+            },
+            "full_path": {
+              "type": "string",
+              "examples": [
+                "itential/dsup"
+              ]
+            },
+            "projects": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "examples": [
+                      25
+                    ]
+                  },
+                  "description": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "examples": [
+                      "Jenn Demo Prebuilt3"
+                    ]
+                  },
+                  "name_with_namespace": {
+                    "type": "string",
+                    "examples": [
+                      "itential / dsup / Jenn Demo Prebuilt3"
+                    ]
+                  },
+                  "path": {
+                    "type": "string",
+                    "examples": [
+                      "jenn-demo-prebuilt3"
+                    ]
+                  },
+                  "path_with_namespace": {
+                    "type": "string",
+                    "examples": [
+                      "itential/dsup/jenn-demo-prebuilt3"
+                    ]
+                  }
+                },
+                "required": []
+              },
+              "$id": "projects"
+            },
+            "shared_projects": {
+              "type": "array"
+            }
+          },
+          "required": []
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "path",
+      "type": "string"
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "projectExists",
+      "type": "boolean"
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "method",
+      "library": "Array",
+      "method": "find",
+      "args": [
+        null,
+        "ƒ_query_1",
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 1
+      }
+    },
+    {
+      "id": 2,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "groupsId",
+        "ptr": "/response/projects"
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 3,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "path",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/2/value"
+      }
+    },
+    {
+      "id": 4,
+      "type": "declaration",
+      "library": "Boolean",
+      "method": "new Boolean",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      }
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "declaration",
+        "name": 4,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 6,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 4,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "projectExists",
+        "ptr": ""
+      }
+    }
+  ],
+  "functions": [
+    {
+      "incoming": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "examples": [
+                25
+              ]
+            },
+            "description": {
+              "type": "null"
+            },
+            "name": {
+              "type": "string",
+              "examples": [
+                "Jenn Demo Prebuilt3"
+              ]
+            },
+            "name_with_namespace": {
+              "type": "string",
+              "examples": [
+                "itential / dsup / Jenn Demo Prebuilt3"
+              ]
+            },
+            "path": {
+              "type": "string",
+              "examples": [
+                "jenn-demo-prebuilt3"
+              ]
+            },
+            "path_with_namespace": {
+              "type": "string",
+              "examples": [
+                "itential/dsup/jenn-demo-prebuilt3"
+              ]
+            }
+          },
+          "required": [],
+          "$id": "element"
+        },
+        {
+          "title": "index",
+          "type": "number",
+          "optional": true,
+          "$id": "index"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "examples": [
+                  25
+                ]
+              },
+              "description": {
+                "type": "null"
+              },
+              "name": {
+                "type": "string",
+                "examples": [
+                  "Jenn Demo Prebuilt3"
+                ]
+              },
+              "name_with_namespace": {
+                "type": "string",
+                "examples": [
+                  "itential / dsup / Jenn Demo Prebuilt3"
+                ]
+              },
+              "path": {
+                "type": "string",
+                "examples": [
+                  "jenn-demo-prebuilt3"
+                ]
+              },
+              "path_with_namespace": {
+                "type": "string",
+                "examples": [
+                  "itential/dsup/jenn-demo-prebuilt3"
+                ]
+              }
+            },
+            "required": []
+          },
+          "$id": "array",
+          "optional": true
+        },
+        {
+          "$id": "thisArg",
+          "type": "object",
+          "properties": {
+            "0_path": {
+              "$id": "path",
+              "type": "string"
+            }
+          },
+          "isContext": true,
+          "isThis": true,
+          "isIndexed": true
+        }
+      ],
+      "outgoing": [
+        {
+          "title": "return",
+          "type": "boolean",
+          "$id": "return"
+        }
+      ],
+      "functions": [],
+      "name": "ƒ_query_1",
+      "steps": [
+        {
+          "id": 1,
+          "type": "method",
+          "library": "Equality",
+          "method": "equality",
+          "args": [
+            null,
+            null
+          ],
+          "view": {
+            "row": 2,
+            "col": 1
+          }
+        },
+        {
+          "id": 2,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "element",
+            "ptr": "/path"
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/0/value"
+          }
+        },
+        {
+          "id": 3,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "thisArg",
+            "ptr": "/0_path"
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/1/value"
+          }
+        },
+        {
+          "id": 4,
+          "type": "assign",
+          "from": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "outgoing",
+            "name": "return",
+            "ptr": ""
+          }
+        }
+      ],
+      "view": {
+        "col": 2,
+        "row": 4
+      },
+      "id": "ƒ_query_1",
+      "comments": []
+    }
+  ],
+  "comments": [],
+  "view": {
+    "col": 2,
+    "row": 5
+  },
+  "created": "2022-11-18T18:18:22.526Z",
+  "createdBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "lastUpdated": "2022-11-18T18:18:22.526Z",
+  "lastUpdatedBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "version": "3.17.7-2021.1.7",
+  "tags": []
+}

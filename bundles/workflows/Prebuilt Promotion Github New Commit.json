@@ -1,0 +1,1062 @@
+{
+  "canvasVersion": 1,
+  "created": "2022-05-12T17:42:37.891Z",
+  "createdVersion": "5.40.5-2021.1.72.0",
+  "created_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "description": "",
+  "font_size": 12,
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "artifact_array": {
+        "type": "array"
+      },
+      "owner": {
+        "title": "owner",
+        "type": "string"
+      },
+      "repo": {
+        "title": "repo",
+        "type": "string"
+      },
+      "adapter_id": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "commitMessage": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "branch": {
+        "title": "branch",
+        "type": "string"
+      }
+    },
+    "required": [
+      "artifact_array",
+      "owner",
+      "repo",
+      "adapter_id",
+      "commitMessage",
+      "branch"
+    ]
+  },
+  "lastUpdatedVersion": "5.40.5-2021.1.89.0",
+  "last_updated": "2022-11-18T18:18:22.143Z",
+  "last_updated_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "name": "Prebuilt Promotion Github New Commit",
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "artifact_array": {
+        "type": "array"
+      },
+      "owner": {
+        "title": "owner",
+        "type": "string"
+      },
+      "repo": {
+        "title": "repo",
+        "type": "string"
+      },
+      "adapter_id": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "commitMessage": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "branch": {
+        "title": "branch",
+        "type": "string"
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "treeArray": {
+        "title": "pushedArray",
+        "type": "array",
+        "examples": [
+          [
+            "Device1",
+            "Device2",
+            "Device3"
+          ]
+        ]
+      },
+      "payLoad": {
+        "title": "object",
+        "type": "object",
+        "properties": {},
+        "examples": [
+          {
+            "first": {
+              "second": {
+                "third": "last"
+              }
+            }
+          }
+        ]
+      },
+      "shaArray": {
+        "title": "pushedArray",
+        "type": "array",
+        "examples": [
+          [
+            "Device1",
+            "Device2",
+            "Device3"
+          ]
+        ]
+      }
+    }
+  },
+  "preAutomationTime": 0,
+  "sla": 0,
+  "tasks": {
+    "6602": {
+      "name": "numberToString",
+      "canvasName": "toString",
+      "summary": "Convert number to string.",
+      "description": "Returns a string representing the specified Number object.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Number",
+      "variables": {
+        "incoming": {
+          "num": 100644,
+          "radix": ""
+        },
+        "outgoing": {
+          "numToString": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.42950108459869846,
+      "y": 1.1664829106945975,
+      "scheduled": false
+    },
+    "7884": {
+      "name": "newVariable",
+      "canvasName": "newVariable",
+      "summary": "Create a Job Variable",
+      "description": "Create a new Job variable by Job ID and assign it a value.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "name": "treeArray",
+          "value": []
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.2794496990541703,
+      "y": 0.25761772853185594
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": -0.1951848667239897,
+      "y": 0.2520775623268698
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 2.4419604471195187,
+      "y": 0.2590027700831025
+    },
+    "2e4d": {
+      "name": "forEach",
+      "canvasName": "forEach",
+      "summary": "For Each Loop",
+      "description": "Loop over each file to be committed",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_array": "$var.job.artifact_array"
+        },
+        "outgoing": {
+          "current_item": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.44540853217642806,
+      "y": 0.2535832414553473,
+      "scheduled": false
+    },
+    "3a1c": {
+      "name": "newVariable",
+      "canvasName": "newVariable",
+      "summary": "Create a Job Variable",
+      "description": "Create a new Job variable by Job ID and assign it a value.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "name": "payLoad",
+          "value": {
+            "content": "aGpmZGM=",
+            "encoding": "utf-8|base64"
+          }
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.4302241503976862,
+      "y": 0.41675854465270123
+    },
+    "d4b5": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "convertObjecttoString",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "605a0b9299ae1b00eb7c74e9",
+          "variableMap": {
+            "inputObject": "$var.2e4d.current_item"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": false,
+            "revertToDefaultValue": false
+          }
+        },
+        "outgoing": {
+          "action": null,
+          "filePath": null,
+          "content": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.4164859002169197,
+      "y": 0.5755237045203969,
+      "task_name": "convertObjecttoString",
+      "retrySettings": null
+    },
+    "e95f": {
+      "name": "setObjectKey",
+      "canvasName": "setObjectKey",
+      "summary": "Set Object Key",
+      "description": "Set content data per file",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Object",
+      "variables": {
+        "incoming": {
+          "obj": "$var.job.payLoad",
+          "path": [
+            "content"
+          ],
+          "value": "$var.d4b5.content"
+        },
+        "outgoing": {
+          "object": "$var.job.payLoad"
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.4164859002169197,
+      "y": 0.7155457552370452,
+      "scheduled": false
+    },
+    "7ece": {
+      "name": "postReposOwnerRepoGitBlobs",
+      "canvasName": "postReposOwnerRepoGitBlobs",
+      "summary": "Create a Blob.",
+      "description": "Create a Blob. This is done for each file and adds the file data to the github server",
+      "location": "Adapter",
+      "locationType": "GitHub",
+      "app": "GitHub",
+      "type": "automatic",
+      "displayName": "GitHub",
+      "variables": {
+        "incoming": {
+          "owner": "$var.job.owner",
+          "repo": "$var.job.repo",
+          "body": "$var.job.payLoad",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.4309472161966739,
+      "y": 0.8886438809261301,
+      "scheduled": false
+    },
+    "423c": {
+      "name": "postReposOwnerRepoGitTrees",
+      "canvasName": "postReposOwnerRepoGitTrees",
+      "summary": "Create a tree",
+      "description": "Create a Tree. This will create the tree with the files and their paths for git",
+      "location": "Adapter",
+      "locationType": "GitHub",
+      "app": "GitHub",
+      "type": "automatic",
+      "displayName": "GitHub",
+      "variables": {
+        "incoming": {
+          "owner": "$var.job.owner",
+          "repo": "$var.job.repo",
+          "body": "$var.36ba.merged_object",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.907744874715262,
+      "y": 0.2524137931034483,
+      "scheduled": false
+    },
+    "cc5a": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query blob sha",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.sha",
+          "obj": "$var.7ece.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.42588575560375996,
+      "y": 1.0275633958103638,
+      "scheduled": false
+    },
+    "5f91": {
+      "name": "arrayPush",
+      "canvasName": "push",
+      "summary": "Adds an element to the end of the array.",
+      "description": "Adds one element to the end of an array and returns the (newly modified) array.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Array",
+      "variables": {
+        "incoming": {
+          "arr": "$var.job.treeArray",
+          "elementN": "$var.97cc.merged_object"
+        },
+        "outgoing": {
+          "pushedArray": "$var.job.treeArray"
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.417995444191344,
+      "y": 1.5544827586206897,
+      "scheduled": false
+    },
+    "97cc": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge Data",
+      "description": "Create payload per blob to be added to Tree array",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "path",
+              "value": {
+                "task": "d4b5",
+                "variable": "filePath"
+              }
+            },
+            {
+              "key": "mode",
+              "value": {
+                "task": "6602",
+                "variable": "numToString"
+              }
+            },
+            {
+              "key": "type",
+              "value": {
+                "task": "static",
+                "variable": "blob"
+              }
+            },
+            {
+              "key": "sha",
+              "value": {
+                "task": "cc5a",
+                "variable": "return_data"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.4202733485193622,
+      "y": 1.376551724137931
+    },
+    "36ba": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "create tree body",
+      "description": "Add blobs from tree array and tree's sha to single object for new tree payload",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "base_tree",
+              "value": {
+                "task": "79cc",
+                "variable": "return_data",
+                "editable": true
+              }
+            },
+            {
+              "key": "tree",
+              "value": {
+                "task": "job",
+                "variable": "treeArray"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.6252847380410023,
+      "y": 0.2413793103448276
+    },
+    "20f0": {
+      "name": "postReposOwnerRepoGitCommits",
+      "canvasName": "postReposOwnerRepoGitCommits",
+      "summary": "Create a Commit.",
+      "description": "Create a Commit of the Tree created in prior task",
+      "location": "Adapter",
+      "locationType": "GitHub",
+      "app": "GitHub",
+      "type": "automatic",
+      "displayName": "GitHub",
+      "variables": {
+        "incoming": {
+          "owner": "$var.job.owner",
+          "repo": "$var.job.repo",
+          "body": "$var.f1d9.merged_object",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.7747205503009458,
+      "y": 0.27285318559556787,
+      "scheduled": false
+    },
+    "f1d9": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "create commit body",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "message",
+              "value": {
+                "task": "job",
+                "variable": "commitMessage",
+                "editable": true
+              }
+            },
+            {
+              "key": "tree",
+              "value": {
+                "task": "cbe5",
+                "variable": "return_data"
+              }
+            },
+            {
+              "key": "parents",
+              "value": {
+                "task": "job",
+                "variable": "shaArray"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.6173688736027516,
+      "y": 0.26869806094182824
+    },
+    "af31": {
+      "name": "newVariable",
+      "canvasName": "newVariable",
+      "summary": "Create a Job Variable",
+      "description": "Create a new Job variable by Job ID and assign it a value.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "name": "shaArray",
+          "value": []
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.3250214961306965,
+      "y": 0.27977839335180055
+    },
+    "e604": {
+      "name": "arrayPush",
+      "canvasName": "push",
+      "summary": "Adds an element to the end of the array.",
+      "description": "Adds one element to the end of an array and returns the (newly modified) array.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Array",
+      "variables": {
+        "incoming": {
+          "arr": "$var.job.shaArray",
+          "elementN": "$var.5a2b.return_data"
+        },
+        "outgoing": {
+          "pushedArray": "$var.job.shaArray"
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 1.4797936371453138,
+      "y": 0.27977839335180055,
+      "scheduled": false
+    },
+    "cbe5": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "query tree sha",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.sha",
+          "obj": "$var.423c.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.2087227414330217,
+      "y": 0.2631578947368421,
+      "scheduled": false
+    },
+    "22a3": {
+      "name": "getReposOwnerRepoBranchesBranch",
+      "canvasName": "getReposOwnerRepoBranchesBranch",
+      "summary": "Get Branch",
+      "description": "Get Branch. Returns SHA of commit the head of this branch points to as well as SHA of tree associated with this commit",
+      "location": "Adapter",
+      "locationType": "GitHub",
+      "app": "GitHub",
+      "type": "automatic",
+      "displayName": "GitHub",
+      "variables": {
+        "incoming": {
+          "owner": "$var.job.owner",
+          "repo": "$var.job.repo",
+          "branch": "$var.job.branch",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": -0.03181427343078246,
+      "y": 0.2631578947368421,
+      "scheduled": false
+    },
+    "5a2b": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query branch SHA",
+      "description": "Query branch's commit SHA",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.commit.sha",
+          "obj": "$var.22a3.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.1012292118582791,
+      "y": 0.2613009922822492,
+      "scheduled": false
+    },
+    "79cc": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query parent tree SHA",
+      "description": "Query tree SHA",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.commit.commit.tree.sha",
+          "obj": "$var.22a3.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.1829356471438901,
+      "y": 0.26460859977949286,
+      "scheduled": false
+    },
+    "5a89": {
+      "name": "patchReposOwnerRepoGitRefsRef",
+      "canvasName": "patchReposOwnerRepoGitRefsRef",
+      "summary": "Update a Reference",
+      "description": "Updates the HEAD reference on your branch up to the new commit made in last step",
+      "location": "Adapter",
+      "locationType": "GitHub",
+      "app": "GitHub",
+      "type": "automatic",
+      "displayName": "GitHub",
+      "variables": {
+        "incoming": {
+          "owner": "$var.job.owner",
+          "repo": "$var.job.repo",
+          "ref": "$var.a641.combinedStrings",
+          "body": "$var.d72a.merged_object",
+          "adapter_id": "$var.job.adapter_id"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 2.302665520206363,
+      "y": 0.2742382271468144,
+      "scheduled": false
+    },
+    "f120": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "new commit sha",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.sha",
+          "obj": "$var.20f0.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.9140154772141014,
+      "y": 0.2659279778393352,
+      "scheduled": false
+    },
+    "d72a": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "update ref body",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "sha",
+              "value": {
+                "task": "f120",
+                "variable": "return_data"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 1.9802235597592432,
+      "y": 0.26038781163434904
+    },
+    "a641": {
+      "name": "stringConcat",
+      "canvasName": "concat",
+      "summary": "Concatenates strings together.",
+      "description": "Concatenates a string with a second string(s). The second parameter can be a string or array.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "String",
+      "variables": {
+        "incoming": {
+          "str": "heads/",
+          "stringN": "$var.job.branch"
+        },
+        "outgoing": {
+          "combinedStrings": null
+        },
+        "error": ""
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 2.1006018916595015,
+      "y": 0.2673130193905817,
+      "scheduled": false
+    }
+  },
+  "transitions": {
+    "6223": {},
+    "6602": {
+      "97cc": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "6839": {},
+    "7884": {
+      "2e4d": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_start": {
+      "22a3": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "2e4d": {
+      "3a1c": {
+        "type": "standard",
+        "state": "loop"
+      },
+      "36ba": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "3a1c": {
+      "d4b5": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "d4b5": {
+      "e95f": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "e95f": {
+      "7ece": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "1b02": {},
+    "7ece": {
+      "cc5a": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "423c": {
+      "cbe5": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "cc5a": {
+      "6602": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5f91": {},
+    "99aa": {},
+    "97cc": {
+      "5f91": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "36ba": {
+      "423c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "20f0": {
+      "f120": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f1d9": {
+      "20f0": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "a37a": {},
+    "af31": {
+      "e604": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "e604": {
+      "f1d9": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "cbe5": {
+      "af31": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "22a3": {
+      "5a2b": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5a2b": {
+      "79cc": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "79cc": {
+      "7884": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5a89": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f120": {
+      "d72a": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "d72a": {
+      "a641": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "a641": {
+      "5a89": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "type": "automation",
+  "tags": [],
+  "groups": []
+}

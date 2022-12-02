@@ -1,0 +1,40 @@
+{
+  "_id": "621d3803480d9289dba507d0",
+  "data": {
+    "description": "",
+    "workflowId": "Prebuilt Promotion",
+    "formId": "Prebuilt Promotion Form",
+    "formData": {
+      "checkInPrebuilt": {
+        "makeProjectPrivateGithubOnly": false,
+        "reDiscoverPrebuilt": false,
+        "forExistingProjects": {
+          "mrType": "patch",
+          "commitMessage": "init commit",
+          "targetBranch": "master"
+        },
+        "versionControlService": "",
+        "projectName": "",
+        "groupPath": "",
+        "prebuilt": "",
+        "projectPath": ""
+      }
+    },
+    "formSchemaHash": 3256095964,
+    "gbac": {
+      "write": [],
+      "read": []
+    },
+    "lastUpdated": "2022-06-13T19:58:03.120Z",
+    "modifiedById": "634d98af40d477fc5be97fca",
+    "modifiedByUsername": "admin@pronghorn"
+  },
+  "lastModifiedBy": "cf758f629d98:150",
+  "lastRunAt": null,
+  "name": "Prebuilt Promotion",
+  "nextRunAt": null,
+  "priority": 0,
+  "repeatInterval": null,
+  "repeatTimezone": null,
+  "type": "normal"
+}

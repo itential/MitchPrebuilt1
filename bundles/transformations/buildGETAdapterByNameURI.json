@@ -1,0 +1,110 @@
+{
+  "_id": "6234aa0b329ee901170bd820",
+  "name": "buildGETAdapterByNameURI",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "adapterName",
+      "type": "string"
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "getAdapterByNameURI",
+      "type": "string"
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        "/adapters?"
+      ],
+      "view": {
+        "row": 1,
+        "col": 1
+      }
+    },
+    {
+      "id": 2,
+      "type": "method",
+      "library": "String",
+      "method": "concat",
+      "args": [
+        null,
+        "contains=",
+        null,
+        "&containsField=name"
+      ],
+      "view": {
+        "row": 2,
+        "col": 2
+      }
+    },
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 2,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "adapterName",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 2,
+        "ptr": "/args/2/value"
+      }
+    },
+    {
+      "id": 6,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 2,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "getAdapterByNameURI",
+        "ptr": ""
+      }
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 3,
+    "row": 5
+  },
+  "created": "2022-11-18T18:18:22.409Z",
+  "createdBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "lastUpdated": "2022-11-18T18:18:22.409Z",
+  "lastUpdatedBy": {
+    "_id": "634d98af40d477fc5be97fca",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "version": "3.17.7-2021.1.7",
+  "tags": []
+}
